@@ -1,0 +1,9 @@
+jupyter
+pandas
+scipy
+matplotlib
+seaborn
+sci_analysis
+statsmodels
+nbconvert
+pandoc
