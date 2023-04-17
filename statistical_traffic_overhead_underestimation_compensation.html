@@ -17885,7 +17885,7 @@ X will take a value less than or equal to x</p>
 <span class="n">col_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="s1">&#39;period&#39;</span><span class="p">,</span> <span class="s1">&#39;conf&#39;</span><span class="p">,</span> <span class="s1">&#39;underestimate&#39;</span><span class="p">,</span> <span class="s1">&#39;corr_abs&#39;</span><span class="p">,</span> <span class="s1">&#39;corr_perc&#39;</span><span class="p">,</span> <span class="s1">&#39;abs_success&#39;</span><span class="p">,</span> <span class="s1">&#39;perc_success&#39;</span><span class="p">]</span>
 
 <span class="n">df_validate_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">col_names</span><span class="p">)</span>
-<span class="c1"># df_validate_test = pd.DataFrame(columns=col_names)</span>
+<span class="n">df_validate_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">col_names</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">m_idx</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">MODELS</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">t_idx</span><span class="p">,</span> <span class="n">time</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">TIMES</span><span class="p">):</span>
@@ -18715,21 +18715,21 @@ X will take a value less than or equal to x</p>
       <td>after</td>
       <td>15</td>
       <td>0.90</td>
-      <td>64.581955</td>
-      <td>12.967097</td>
-      <td>10.187941</td>
-      <td>False</td>
-      <td>False</td>
+      <td>0.030313</td>
+      <td>0.030313</td>
+      <td>0.030313</td>
+      <td>True</td>
+      <td>True</td>
     </tr>
     <tr>
       <th>1</th>
       <td>after</td>
       <td>15</td>
       <td>0.95</td>
-      <td>64.581955</td>
-      <td>6.989914</td>
-      <td>4.544202</td>
-      <td>False</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>True</td>
       <td>True</td>
     </tr>
     <tr>
@@ -18737,10 +18737,10 @@ X will take a value less than or equal to x</p>
       <td>after</td>
       <td>15</td>
       <td>0.97</td>
-      <td>64.581955</td>
-      <td>4.263117</td>
-      <td>2.346506</td>
-      <td>False</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>True</td>
       <td>True</td>
     </tr>
     <tr>
@@ -18748,10 +18748,10 @@ X will take a value less than or equal to x</p>
       <td>after</td>
       <td>60</td>
       <td>0.90</td>
-      <td>77.645503</td>
-      <td>12.874780</td>
-      <td>9.865520</td>
-      <td>False</td>
+      <td>0.011023</td>
+      <td>0.011023</td>
+      <td>0.011023</td>
+      <td>True</td>
       <td>True</td>
     </tr>
     <tr>
@@ -18759,10 +18759,10 @@ X will take a value less than or equal to x</p>
       <td>after</td>
       <td>60</td>
       <td>0.95</td>
-      <td>77.645503</td>
-      <td>6.492504</td>
-      <td>3.973765</td>
-      <td>False</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>True</td>
       <td>True</td>
     </tr>
     <tr>
@@ -18770,10 +18770,10 @@ X will take a value less than or equal to x</p>
       <td>after</td>
       <td>60</td>
       <td>0.97</td>
-      <td>77.645503</td>
-      <td>3.692681</td>
-      <td>1.984127</td>
-      <td>False</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>True</td>
       <td>True</td>
     </tr>
     <tr>
@@ -18781,10 +18781,10 @@ X will take a value less than or equal to x</p>
       <td>after</td>
       <td>120</td>
       <td>0.90</td>
-      <td>84.380511</td>
-      <td>13.436949</td>
-      <td>9.788360</td>
-      <td>False</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>True</td>
       <td>True</td>
     </tr>
     <tr>
@@ -18792,10 +18792,10 @@ X will take a value less than or equal to x</p>
       <td>after</td>
       <td>120</td>
       <td>0.95</td>
-      <td>84.380511</td>
-      <td>6.856261</td>
-      <td>3.968254</td>
-      <td>False</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>True</td>
       <td>True</td>
     </tr>
     <tr>
@@ -18803,10 +18803,10 @@ X will take a value less than or equal to x</p>
       <td>after</td>
       <td>120</td>
       <td>0.97</td>
-      <td>84.380511</td>
-      <td>3.769841</td>
-      <td>1.642416</td>
-      <td>False</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>True</td>
       <td>True</td>
     </tr>
     <tr>
@@ -18814,10 +18814,10 @@ X will take a value less than or equal to x</p>
       <td>after</td>
       <td>180</td>
       <td>0.90</td>
-      <td>84.672619</td>
-      <td>11.904762</td>
-      <td>9.871032</td>
-      <td>False</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>True</td>
       <td>True</td>
     </tr>
     <tr>
@@ -18825,10 +18825,10 @@ X will take a value less than or equal to x</p>
       <td>after</td>
       <td>180</td>
       <td>0.95</td>
-      <td>84.672619</td>
-      <td>5.357143</td>
-      <td>3.918651</td>
-      <td>False</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>True</td>
       <td>True</td>
     </tr>
     <tr>
@@ -18836,9 +18836,9 @@ X will take a value less than or equal to x</p>
       <td>after</td>
       <td>180</td>
       <td>0.97</td>
-      <td>84.672619</td>
-      <td>1.917989</td>
-      <td>1.669974</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18847,21 +18847,21 @@ X will take a value less than or equal to x</p>
       <td>after</td>
       <td>240</td>
       <td>0.90</td>
-      <td>85.912698</td>
-      <td>13.910935</td>
-      <td>10.824515</td>
-      <td>False</td>
-      <td>False</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>True</td>
+      <td>True</td>
     </tr>
     <tr>
       <th>13</th>
       <td>after</td>
       <td>240</td>
       <td>0.95</td>
-      <td>85.912698</td>
-      <td>6.305115</td>
-      <td>4.387125</td>
-      <td>False</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>True</td>
       <td>True</td>
     </tr>
     <tr>
@@ -18869,9 +18869,9 @@ X will take a value less than or equal to x</p>
       <td>after</td>
       <td>240</td>
       <td>0.97</td>
-      <td>85.912698</td>
-      <td>2.425044</td>
-      <td>1.499118</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18880,20 +18880,20 @@ X will take a value less than or equal to x</p>
       <td>after</td>
       <td>360</td>
       <td>0.90</td>
-      <td>92.228836</td>
-      <td>11.574074</td>
-      <td>11.011905</td>
-      <td>False</td>
-      <td>False</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>True</td>
+      <td>True</td>
     </tr>
     <tr>
       <th>16</th>
       <td>after</td>
       <td>360</td>
       <td>0.95</td>
-      <td>92.228836</td>
-      <td>3.902116</td>
-      <td>4.100529</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18902,9 +18902,9 @@ X will take a value less than or equal to x</p>
       <td>after</td>
       <td>360</td>
       <td>0.97</td>
-      <td>92.228836</td>
-      <td>0.826720</td>
-      <td>1.025132</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18913,10 +18913,10 @@ X will take a value less than or equal to x</p>
       <td>after</td>
       <td>480</td>
       <td>0.90</td>
-      <td>85.493827</td>
-      <td>11.287478</td>
-      <td>8.465608</td>
-      <td>False</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>True</td>
       <td>True</td>
     </tr>
     <tr>
@@ -18924,9 +18924,9 @@ X will take a value less than or equal to x</p>
       <td>after</td>
       <td>480</td>
       <td>0.95</td>
-      <td>85.493827</td>
-      <td>3.395062</td>
-      <td>2.645503</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18935,9 +18935,9 @@ X will take a value less than or equal to x</p>
       <td>after</td>
       <td>480</td>
       <td>0.97</td>
-      <td>85.493827</td>
-      <td>0.396825</td>
-      <td>0.176367</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18946,20 +18946,20 @@ X will take a value less than or equal to x</p>
       <td>after</td>
       <td>720</td>
       <td>0.90</td>
-      <td>93.055556</td>
-      <td>15.013228</td>
-      <td>11.640212</td>
-      <td>False</td>
-      <td>False</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>True</td>
+      <td>True</td>
     </tr>
     <tr>
       <th>22</th>
       <td>after</td>
       <td>720</td>
       <td>0.95</td>
-      <td>93.055556</td>
-      <td>3.240741</td>
-      <td>3.505291</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18968,9 +18968,9 @@ X will take a value less than or equal to x</p>
       <td>after</td>
       <td>720</td>
       <td>0.97</td>
-      <td>93.055556</td>
-      <td>0.529101</td>
-      <td>0.396825</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18979,9 +18979,9 @@ X will take a value less than or equal to x</p>
       <td>after</td>
       <td>1440</td>
       <td>0.90</td>
-      <td>100.000000</td>
-      <td>9.788360</td>
-      <td>9.920635</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18990,9 +18990,9 @@ X will take a value less than or equal to x</p>
       <td>after</td>
       <td>1440</td>
       <td>0.95</td>
-      <td>100.000000</td>
-      <td>1.058201</td>
-      <td>0.793651</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -19001,9 +19001,9 @@ X will take a value less than or equal to x</p>
       <td>after</td>
       <td>1440</td>
       <td>0.97</td>
-      <td>100.000000</td>
-      <td>1.058201</td>
-      <td>0.793651</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -19012,10 +19012,10 @@ X will take a value less than or equal to x</p>
       <td>before</td>
       <td>15</td>
       <td>0.90</td>
-      <td>46.450617</td>
-      <td>12.006724</td>
-      <td>9.574791</td>
-      <td>False</td>
+      <td>0.270062</td>
+      <td>0.270062</td>
+      <td>0.270062</td>
+      <td>True</td>
       <td>True</td>
     </tr>
     <tr>
@@ -19023,10 +19023,10 @@ X will take a value less than or equal to x</p>
       <td>before</td>
       <td>15</td>
       <td>0.95</td>
-      <td>46.450617</td>
-      <td>6.484237</td>
-      <td>4.035769</td>
-      <td>False</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>True</td>
       <td>True</td>
     </tr>
     <tr>
@@ -19034,10 +19034,10 @@ X will take a value less than or equal to x</p>
       <td>before</td>
       <td>15</td>
       <td>0.97</td>
-      <td>46.450617</td>
-      <td>3.920029</td>
-      <td>1.978616</td>
-      <td>False</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>True</td>
       <td>True</td>
     </tr>
     <tr>
@@ -19045,10 +19045,10 @@ X will take a value less than or equal to x</p>
       <td>before</td>
       <td>60</td>
       <td>0.90</td>
-      <td>46.456129</td>
-      <td>12.130732</td>
-      <td>6.613757</td>
-      <td>False</td>
+      <td>0.027557</td>
+      <td>0.027557</td>
+      <td>0.027557</td>
+      <td>True</td>
       <td>True</td>
     </tr>
     <tr>
@@ -19056,10 +19056,10 @@ X will take a value less than or equal to x</p>
       <td>before</td>
       <td>60</td>
       <td>0.95</td>
-      <td>46.456129</td>
-      <td>5.968915</td>
-      <td>1.598325</td>
-      <td>False</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>True</td>
       <td>True</td>
     </tr>
     <tr>
@@ -19067,10 +19067,10 @@ X will take a value less than or equal to x</p>
       <td>before</td>
       <td>60</td>
       <td>0.97</td>
-      <td>46.456129</td>
-      <td>3.323413</td>
-      <td>0.396825</td>
-      <td>False</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>True</td>
       <td>True</td>
     </tr>
     <tr>
@@ -19078,10 +19078,10 @@ X will take a value less than or equal to x</p>
       <td>before</td>
       <td>120</td>
       <td>0.90</td>
-      <td>43.794092</td>
-      <td>11.684303</td>
-      <td>9.843474</td>
-      <td>False</td>
+      <td>0.264550</td>
+      <td>0.264550</td>
+      <td>0.264550</td>
+      <td>True</td>
       <td>True</td>
     </tr>
     <tr>
@@ -19089,10 +19089,10 @@ X will take a value less than or equal to x</p>
       <td>before</td>
       <td>120</td>
       <td>0.95</td>
-      <td>43.794092</td>
-      <td>5.291005</td>
-      <td>3.725750</td>
-      <td>False</td>
+      <td>0.099206</td>
+      <td>0.099206</td>
+      <td>0.099206</td>
+      <td>True</td>
       <td>True</td>
     </tr>
     <tr>
@@ -19100,9 +19100,9 @@ X will take a value less than or equal to x</p>
       <td>before</td>
       <td>120</td>
       <td>0.97</td>
-      <td>43.794092</td>
-      <td>2.821869</td>
-      <td>1.311728</td>
+      <td>0.099206</td>
+      <td>0.099206</td>
+      <td>0.099206</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -19111,9 +19111,9 @@ X will take a value less than or equal to x</p>
       <td>before</td>
       <td>180</td>
       <td>0.90</td>
-      <td>49.189815</td>
-      <td>9.325397</td>
-      <td>7.142857</td>
+      <td>0.082672</td>
+      <td>0.082672</td>
+      <td>0.082672</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -19122,9 +19122,9 @@ X will take a value less than or equal to x</p>
       <td>before</td>
       <td>180</td>
       <td>0.95</td>
-      <td>49.189815</td>
-      <td>3.356481</td>
-      <td>1.455026</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -19133,9 +19133,9 @@ X will take a value less than or equal to x</p>
       <td>before</td>
       <td>180</td>
       <td>0.97</td>
-      <td>49.189815</td>
-      <td>1.091270</td>
-      <td>0.231481</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -19144,10 +19144,10 @@ X will take a value less than or equal to x</p>
       <td>before</td>
       <td>240</td>
       <td>0.90</td>
-      <td>44.179894</td>
-      <td>11.155203</td>
-      <td>8.950617</td>
-      <td>False</td>
+      <td>0.132275</td>
+      <td>0.132275</td>
+      <td>0.132275</td>
+      <td>True</td>
       <td>True</td>
     </tr>
     <tr>
@@ -19155,9 +19155,9 @@ X will take a value less than or equal to x</p>
       <td>before</td>
       <td>240</td>
       <td>0.95</td>
-      <td>44.179894</td>
-      <td>4.453263</td>
-      <td>3.615520</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -19166,9 +19166,9 @@ X will take a value less than or equal to x</p>
       <td>before</td>
       <td>240</td>
       <td>0.97</td>
-      <td>44.179894</td>
-      <td>1.499118</td>
-      <td>1.322751</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -19177,31 +19177,31 @@ X will take a value less than or equal to x</p>
       <td>before</td>
       <td>360</td>
       <td>0.90</td>
-      <td>50.231481</td>
-      <td>16.203704</td>
-      <td>16.832011</td>
-      <td>False</td>
-      <td>False</td>
+      <td>0.694444</td>
+      <td>0.694444</td>
+      <td>0.694444</td>
+      <td>True</td>
+      <td>True</td>
     </tr>
     <tr>
       <th>43</th>
       <td>before</td>
       <td>360</td>
       <td>0.95</td>
-      <td>50.231481</td>
-      <td>6.746032</td>
-      <td>7.341270</td>
-      <td>False</td>
-      <td>False</td>
+      <td>0.066138</td>
+      <td>0.066138</td>
+      <td>0.066138</td>
+      <td>True</td>
+      <td>True</td>
     </tr>
     <tr>
       <th>44</th>
       <td>before</td>
       <td>360</td>
       <td>0.97</td>
-      <td>50.231481</td>
-      <td>1.984127</td>
-      <td>1.421958</td>
+      <td>0.033069</td>
+      <td>0.033069</td>
+      <td>0.033069</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -19210,9 +19210,9 @@ X will take a value less than or equal to x</p>
       <td>before</td>
       <td>480</td>
       <td>0.90</td>
-      <td>38.888889</td>
-      <td>6.657848</td>
-      <td>6.746032</td>
+      <td>0.088183</td>
+      <td>0.088183</td>
+      <td>0.088183</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -19221,9 +19221,9 @@ X will take a value less than or equal to x</p>
       <td>before</td>
       <td>480</td>
       <td>0.95</td>
-      <td>38.888889</td>
-      <td>2.028219</td>
-      <td>0.925926</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -19232,9 +19232,9 @@ X will take a value less than or equal to x</p>
       <td>before</td>
       <td>480</td>
       <td>0.97</td>
-      <td>38.888889</td>
-      <td>0.264550</td>
-      <td>0.088183</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -19243,20 +19243,20 @@ X will take a value less than or equal to x</p>
       <td>before</td>
       <td>720</td>
       <td>0.90</td>
-      <td>51.851852</td>
-      <td>12.962963</td>
-      <td>14.087302</td>
-      <td>False</td>
-      <td>False</td>
+      <td>0.198413</td>
+      <td>0.198413</td>
+      <td>0.198413</td>
+      <td>True</td>
+      <td>True</td>
     </tr>
     <tr>
       <th>49</th>
       <td>before</td>
       <td>720</td>
       <td>0.95</td>
-      <td>51.851852</td>
-      <td>2.910053</td>
-      <td>3.306878</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -19265,9 +19265,9 @@ X will take a value less than or equal to x</p>
       <td>before</td>
       <td>720</td>
       <td>0.97</td>
-      <td>51.851852</td>
-      <td>0.529101</td>
-      <td>0.330688</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -19276,9 +19276,9 @@ X will take a value less than or equal to x</p>
       <td>before</td>
       <td>1440</td>
       <td>0.90</td>
-      <td>67.857143</td>
-      <td>8.465608</td>
-      <td>7.407407</td>
+      <td>0.264550</td>
+      <td>0.264550</td>
+      <td>0.264550</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -19287,608 +19287,14 @@ X will take a value less than or equal to x</p>
       <td>before</td>
       <td>1440</td>
       <td>0.95</td>
-      <td>67.857143</td>
-      <td>0.529101</td>
-      <td>0.264550</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>True</td>
       <td>True</td>
     </tr>
     <tr>
       <th>53</th>
-      <td>before</td>
-      <td>1440</td>
-      <td>0.97</td>
-      <td>67.857143</td>
-      <td>0.529101</td>
-      <td>0.264550</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>54</th>
-      <td>after</td>
-      <td>15</td>
-      <td>0.90</td>
-      <td>0.030313</td>
-      <td>0.030313</td>
-      <td>0.030313</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>55</th>
-      <td>after</td>
-      <td>15</td>
-      <td>0.95</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>56</th>
-      <td>after</td>
-      <td>15</td>
-      <td>0.97</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>57</th>
-      <td>after</td>
-      <td>60</td>
-      <td>0.90</td>
-      <td>0.011023</td>
-      <td>0.011023</td>
-      <td>0.011023</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>58</th>
-      <td>after</td>
-      <td>60</td>
-      <td>0.95</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>59</th>
-      <td>after</td>
-      <td>60</td>
-      <td>0.97</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>60</th>
-      <td>after</td>
-      <td>120</td>
-      <td>0.90</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>61</th>
-      <td>after</td>
-      <td>120</td>
-      <td>0.95</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>62</th>
-      <td>after</td>
-      <td>120</td>
-      <td>0.97</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>63</th>
-      <td>after</td>
-      <td>180</td>
-      <td>0.90</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>64</th>
-      <td>after</td>
-      <td>180</td>
-      <td>0.95</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>65</th>
-      <td>after</td>
-      <td>180</td>
-      <td>0.97</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>66</th>
-      <td>after</td>
-      <td>240</td>
-      <td>0.90</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>67</th>
-      <td>after</td>
-      <td>240</td>
-      <td>0.95</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>68</th>
-      <td>after</td>
-      <td>240</td>
-      <td>0.97</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>69</th>
-      <td>after</td>
-      <td>360</td>
-      <td>0.90</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>70</th>
-      <td>after</td>
-      <td>360</td>
-      <td>0.95</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>71</th>
-      <td>after</td>
-      <td>360</td>
-      <td>0.97</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>72</th>
-      <td>after</td>
-      <td>480</td>
-      <td>0.90</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>73</th>
-      <td>after</td>
-      <td>480</td>
-      <td>0.95</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>74</th>
-      <td>after</td>
-      <td>480</td>
-      <td>0.97</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>75</th>
-      <td>after</td>
-      <td>720</td>
-      <td>0.90</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>76</th>
-      <td>after</td>
-      <td>720</td>
-      <td>0.95</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>77</th>
-      <td>after</td>
-      <td>720</td>
-      <td>0.97</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>78</th>
-      <td>after</td>
-      <td>1440</td>
-      <td>0.90</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>79</th>
-      <td>after</td>
-      <td>1440</td>
-      <td>0.95</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>80</th>
-      <td>after</td>
-      <td>1440</td>
-      <td>0.97</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>81</th>
-      <td>before</td>
-      <td>15</td>
-      <td>0.90</td>
-      <td>0.270062</td>
-      <td>0.270062</td>
-      <td>0.270062</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>82</th>
-      <td>before</td>
-      <td>15</td>
-      <td>0.95</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>83</th>
-      <td>before</td>
-      <td>15</td>
-      <td>0.97</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>84</th>
-      <td>before</td>
-      <td>60</td>
-      <td>0.90</td>
-      <td>0.027557</td>
-      <td>0.027557</td>
-      <td>0.027557</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>85</th>
-      <td>before</td>
-      <td>60</td>
-      <td>0.95</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>86</th>
-      <td>before</td>
-      <td>60</td>
-      <td>0.97</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>87</th>
-      <td>before</td>
-      <td>120</td>
-      <td>0.90</td>
-      <td>0.264550</td>
-      <td>0.264550</td>
-      <td>0.264550</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>88</th>
-      <td>before</td>
-      <td>120</td>
-      <td>0.95</td>
-      <td>0.099206</td>
-      <td>0.099206</td>
-      <td>0.099206</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>89</th>
-      <td>before</td>
-      <td>120</td>
-      <td>0.97</td>
-      <td>0.099206</td>
-      <td>0.099206</td>
-      <td>0.099206</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>90</th>
-      <td>before</td>
-      <td>180</td>
-      <td>0.90</td>
-      <td>0.082672</td>
-      <td>0.082672</td>
-      <td>0.082672</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>91</th>
-      <td>before</td>
-      <td>180</td>
-      <td>0.95</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>92</th>
-      <td>before</td>
-      <td>180</td>
-      <td>0.97</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>93</th>
-      <td>before</td>
-      <td>240</td>
-      <td>0.90</td>
-      <td>0.132275</td>
-      <td>0.132275</td>
-      <td>0.132275</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>94</th>
-      <td>before</td>
-      <td>240</td>
-      <td>0.95</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>95</th>
-      <td>before</td>
-      <td>240</td>
-      <td>0.97</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>96</th>
-      <td>before</td>
-      <td>360</td>
-      <td>0.90</td>
-      <td>0.694444</td>
-      <td>0.694444</td>
-      <td>0.694444</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>97</th>
-      <td>before</td>
-      <td>360</td>
-      <td>0.95</td>
-      <td>0.066138</td>
-      <td>0.066138</td>
-      <td>0.066138</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>98</th>
-      <td>before</td>
-      <td>360</td>
-      <td>0.97</td>
-      <td>0.033069</td>
-      <td>0.033069</td>
-      <td>0.033069</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>99</th>
-      <td>before</td>
-      <td>480</td>
-      <td>0.90</td>
-      <td>0.088183</td>
-      <td>0.088183</td>
-      <td>0.088183</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>100</th>
-      <td>before</td>
-      <td>480</td>
-      <td>0.95</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>101</th>
-      <td>before</td>
-      <td>480</td>
-      <td>0.97</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>102</th>
-      <td>before</td>
-      <td>720</td>
-      <td>0.90</td>
-      <td>0.198413</td>
-      <td>0.198413</td>
-      <td>0.198413</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>103</th>
-      <td>before</td>
-      <td>720</td>
-      <td>0.95</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>104</th>
-      <td>before</td>
-      <td>720</td>
-      <td>0.97</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>105</th>
-      <td>before</td>
-      <td>1440</td>
-      <td>0.90</td>
-      <td>0.264550</td>
-      <td>0.264550</td>
-      <td>0.264550</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>106</th>
-      <td>before</td>
-      <td>1440</td>
-      <td>0.95</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>107</th>
       <td>before</td>
       <td>1440</td>
       <td>0.97</td>
@@ -19974,7 +19380,7 @@ X will take a value less than or equal to x</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
-<pre>&#39;test abs: 80/108 -&gt; 74.07407407407408&#39;</pre>
+<pre>&#39;test abs: 54/54 -&gt; 100.0&#39;</pre>
 </div>
 
 </div>
@@ -19986,7 +19392,7 @@ X will take a value less than or equal to x</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
-<pre>&#39;test perc: 101/108 -&gt; 93.51851851851852&#39;</pre>
+<pre>&#39;test perc: 54/54 -&gt; 100.0&#39;</pre>
 </div>
 
 </div>
