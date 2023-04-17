@@ -15393,7 +15393,7 @@ X will take a value less than or equal to x</p>
 <span class="c1"># percentage - homu much percenta add to value </span>
 <span class="c1"># percentage_wo_appox - linear approximation may go outside the right boundary</span>
 
-<span class="n">col_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="s1">&#39;period&#39;</span><span class="p">,</span> <span class="s1">&#39;conf&#39;</span><span class="p">,</span> <span class="s1">&#39;abs_value&#39;</span><span class="p">,</span> <span class="s1">&#39;abs_wo_approx&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_wo_approx&#39;</span><span class="p">]</span>
+<span class="n">col_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="s1">&#39;period&#39;</span><span class="p">,</span> <span class="s1">&#39;conf&#39;</span><span class="p">,</span> <span class="s1">&#39;abs_value&#39;</span><span class="p">,</span> <span class="s1">&#39;abs_min_approx_rb&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_min_approx_rb&#39;</span><span class="p">]</span>
 <span class="n">df_result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">col_names</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">m_idx</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">MODELS</span><span class="p">):</span>
@@ -15416,7 +15416,7 @@ X will take a value less than or equal to x</p>
             <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x_l</span><span class="p">,</span> <span class="n">x_r</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">get_x_for_y</span><span class="p">(</span><span class="n">yx_data</span><span class="o">=</span><span class="n">ecdf_lower</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">conf</span><span class="p">)</span> 
             <span class="n">res_d</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="n">conf_idx</span><span class="p">]</span>
             <span class="n">res_d</span><span class="p">[</span><span class="s1">&#39;abs_value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span> 
-            <span class="n">res_d</span><span class="p">[</span><span class="s1">&#39;abs_wo_approx&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">x_r</span>
+            <span class="n">res_d</span><span class="p">[</span><span class="s1">&#39;abs_min_approx_rb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_r</span><span class="p">)</span>
                 
         
         <span class="n">pdf</span><span class="p">,</span> <span class="n">cdf</span><span class="p">,</span> <span class="n">ecdf</span><span class="p">,</span> <span class="n">ecdf_lower</span><span class="p">,</span> <span class="n">ecdf_upper</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">get_distributions</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">perc</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -15425,7 +15425,7 @@ X will take a value less than or equal to x</p>
             <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x_l</span><span class="p">,</span> <span class="n">x_r</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">get_x_for_y</span><span class="p">(</span><span class="n">yx_data</span><span class="o">=</span><span class="n">ecdf_lower</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">conf</span><span class="p">)</span> 
             <span class="n">res_d</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="n">conf_idx</span><span class="p">]</span>
             <span class="n">res_d</span><span class="p">[</span><span class="s1">&#39;percentage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
-            <span class="n">res_d</span><span class="p">[</span><span class="s1">&#39;percentage_wo_approx&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">x_r</span>
+            <span class="n">res_d</span><span class="p">[</span><span class="s1">&#39;percentage_min_approx_rb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_r</span><span class="p">)</span>
             
         <span class="n">df_result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_result</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">res</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">col_names</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         
@@ -15489,9 +15489,9 @@ X will take a value less than or equal to x</p>
       <th>period</th>
       <th>conf</th>
       <th>abs_value</th>
-      <th>abs_wo_approx</th>
+      <th>abs_min_approx_rb</th>
       <th>percentage</th>
-      <th>percentage_wo_approx</th>
+      <th>percentage_min_approx_rb</th>
     </tr>
   </thead>
   <tbody>
@@ -15503,7 +15503,7 @@ X will take a value less than or equal to x</p>
       <td>176.000000</td>
       <td>176.000000</td>
       <td>16.427288</td>
-      <td>16.427784</td>
+      <td>16.427288</td>
     </tr>
     <tr>
       <th>1</th>
@@ -15513,7 +15513,7 @@ X will take a value less than or equal to x</p>
       <td>230.000000</td>
       <td>230.000000</td>
       <td>21.073646</td>
-      <td>21.074816</td>
+      <td>21.073646</td>
     </tr>
     <tr>
       <th>2</th>
@@ -15533,7 +15533,7 @@ X will take a value less than or equal to x</p>
       <td>202.000000</td>
       <td>202.000000</td>
       <td>18.133728</td>
-      <td>18.134715</td>
+      <td>18.133728</td>
     </tr>
     <tr>
       <th>4</th>
@@ -15553,7 +15553,7 @@ X will take a value less than or equal to x</p>
       <td>311.000000</td>
       <td>311.000000</td>
       <td>26.241349</td>
-      <td>26.251277</td>
+      <td>26.241349</td>
     </tr>
     <tr>
       <th>6</th>
@@ -15563,7 +15563,7 @@ X will take a value less than or equal to x</p>
       <td>216.000000</td>
       <td>216.000000</td>
       <td>18.954059</td>
-      <td>18.957346</td>
+      <td>18.954059</td>
     </tr>
     <tr>
       <th>7</th>
@@ -15573,7 +15573,7 @@ X will take a value less than or equal to x</p>
       <td>274.000000</td>
       <td>274.000000</td>
       <td>23.544726</td>
-      <td>23.549884</td>
+      <td>23.544726</td>
     </tr>
     <tr>
       <th>8</th>
@@ -15581,9 +15581,9 @@ X will take a value less than or equal to x</p>
       <td>120</td>
       <td>0.97</td>
       <td>329.188030</td>
-      <td>330.000000</td>
+      <td>329.188030</td>
       <td>27.658946</td>
-      <td>27.698574</td>
+      <td>27.658946</td>
     </tr>
     <tr>
       <th>9</th>
@@ -15591,9 +15591,9 @@ X will take a value less than or equal to x</p>
       <td>180</td>
       <td>0.90</td>
       <td>233.809315</td>
-      <td>234.000000</td>
+      <td>233.809315</td>
       <td>19.111305</td>
-      <td>19.112628</td>
+      <td>19.111305</td>
     </tr>
     <tr>
       <th>10</th>
@@ -15603,7 +15603,7 @@ X will take a value less than or equal to x</p>
       <td>305.000000</td>
       <td>305.000000</td>
       <td>23.416841</td>
-      <td>23.434705</td>
+      <td>23.416841</td>
     </tr>
     <tr>
       <th>11</th>
@@ -15611,9 +15611,9 @@ X will take a value less than or equal to x</p>
       <td>180</td>
       <td>0.97</td>
       <td>386.507944</td>
-      <td>389.000000</td>
+      <td>386.507944</td>
       <td>27.708741</td>
-      <td>27.758621</td>
+      <td>27.708741</td>
     </tr>
     <tr>
       <th>12</th>
@@ -15621,9 +15621,9 @@ X will take a value less than or equal to x</p>
       <td>240</td>
       <td>0.90</td>
       <td>224.857829</td>
-      <td>225.000000</td>
+      <td>224.857829</td>
       <td>18.517330</td>
-      <td>18.518519</td>
+      <td>18.517330</td>
     </tr>
     <tr>
       <th>13</th>
@@ -15631,9 +15631,9 @@ X will take a value less than or equal to x</p>
       <td>240</td>
       <td>0.95</td>
       <td>291.315659</td>
-      <td>292.000000</td>
+      <td>291.315659</td>
       <td>23.110596</td>
-      <td>23.118280</td>
+      <td>23.110596</td>
     </tr>
     <tr>
       <th>14</th>
@@ -15641,9 +15641,9 @@ X will take a value less than or equal to x</p>
       <td>240</td>
       <td>0.97</td>
       <td>366.133488</td>
-      <td>368.000000</td>
+      <td>366.133488</td>
       <td>27.672845</td>
-      <td>27.710843</td>
+      <td>27.672845</td>
     </tr>
     <tr>
       <th>15</th>
@@ -15651,9 +15651,9 @@ X will take a value less than or equal to x</p>
       <td>360</td>
       <td>0.90</td>
       <td>262.270891</td>
-      <td>263.000000</td>
+      <td>262.270891</td>
       <td>19.258318</td>
-      <td>19.277108</td>
+      <td>19.258318</td>
     </tr>
     <tr>
       <th>16</th>
@@ -15661,9 +15661,9 @@ X will take a value less than or equal to x</p>
       <td>360</td>
       <td>0.95</td>
       <td>351.412672</td>
-      <td>353.000000</td>
+      <td>351.412672</td>
       <td>23.470770</td>
-      <td>23.511294</td>
+      <td>23.470770</td>
     </tr>
     <tr>
       <th>17</th>
@@ -15671,9 +15671,9 @@ X will take a value less than or equal to x</p>
       <td>360</td>
       <td>0.97</td>
       <td>497.950891</td>
-      <td>498.000000</td>
+      <td>497.950891</td>
       <td>30.696494</td>
-      <td>30.717185</td>
+      <td>30.696494</td>
     </tr>
     <tr>
       <th>18</th>
@@ -15683,7 +15683,7 @@ X will take a value less than or equal to x</p>
       <td>260.000000</td>
       <td>260.000000</td>
       <td>19.333386</td>
-      <td>19.335793</td>
+      <td>19.333386</td>
     </tr>
     <tr>
       <th>19</th>
@@ -15691,9 +15691,9 @@ X will take a value less than or equal to x</p>
       <td>480</td>
       <td>0.95</td>
       <td>353.789977</td>
-      <td>356.000000</td>
+      <td>353.789977</td>
       <td>23.919971</td>
-      <td>23.959828</td>
+      <td>23.919971</td>
     </tr>
     <tr>
       <th>20</th>
@@ -15701,9 +15701,9 @@ X will take a value less than or equal to x</p>
       <td>480</td>
       <td>0.97</td>
       <td>572.076442</td>
-      <td>583.000000</td>
+      <td>572.076442</td>
       <td>36.344435</td>
-      <td>36.690141</td>
+      <td>36.344435</td>
     </tr>
     <tr>
       <th>21</th>
@@ -15713,7 +15713,7 @@ X will take a value less than or equal to x</p>
       <td>269.000000</td>
       <td>269.000000</td>
       <td>18.995867</td>
-      <td>19.002890</td>
+      <td>18.995867</td>
     </tr>
     <tr>
       <th>22</th>
@@ -15721,9 +15721,9 @@ X will take a value less than or equal to x</p>
       <td>720</td>
       <td>0.95</td>
       <td>397.149408</td>
-      <td>402.000000</td>
+      <td>397.149408</td>
       <td>23.819547</td>
-      <td>23.905724</td>
+      <td>23.819547</td>
     </tr>
     <tr>
       <th>23</th>
@@ -15741,9 +15741,9 @@ X will take a value less than or equal to x</p>
       <td>1440</td>
       <td>0.90</td>
       <td>355.150837</td>
-      <td>356.000000</td>
+      <td>355.150837</td>
       <td>21.981559</td>
-      <td>21.998451</td>
+      <td>21.981559</td>
     </tr>
     <tr>
       <th>25</th>
@@ -15751,9 +15751,9 @@ X will take a value less than or equal to x</p>
       <td>1440</td>
       <td>0.95</td>
       <td>606.262553</td>
-      <td>628.000000</td>
+      <td>606.262553</td>
       <td>34.943816</td>
-      <td>35.772358</td>
+      <td>34.943816</td>
     </tr>
     <tr>
       <th>26</th>
@@ -15771,9 +15771,9 @@ X will take a value less than or equal to x</p>
       <td>15</td>
       <td>0.90</td>
       <td>144.505656</td>
-      <td>144.507333</td>
+      <td>144.505656</td>
       <td>12.843299</td>
-      <td>12.843818</td>
+      <td>12.843299</td>
     </tr>
     <tr>
       <th>28</th>
@@ -15781,9 +15781,9 @@ X will take a value less than or equal to x</p>
       <td>15</td>
       <td>0.95</td>
       <td>203.505304</td>
-      <td>203.550548</td>
+      <td>203.505304</td>
       <td>17.872013</td>
-      <td>17.873760</td>
+      <td>17.872013</td>
     </tr>
     <tr>
       <th>29</th>
@@ -15791,9 +15791,9 @@ X will take a value less than or equal to x</p>
       <td>15</td>
       <td>0.97</td>
       <td>250.393029</td>
-      <td>250.416010</td>
+      <td>250.393029</td>
       <td>21.642334</td>
-      <td>21.642498</td>
+      <td>21.642334</td>
     </tr>
     <tr>
       <th>30</th>
@@ -15801,9 +15801,9 @@ X will take a value less than or equal to x</p>
       <td>60</td>
       <td>0.90</td>
       <td>243.831719</td>
-      <td>243.842421</td>
+      <td>243.831719</td>
       <td>25.045762</td>
-      <td>25.047714</td>
+      <td>25.045762</td>
     </tr>
     <tr>
       <th>31</th>
@@ -15811,9 +15811,9 @@ X will take a value less than or equal to x</p>
       <td>60</td>
       <td>0.95</td>
       <td>357.607358</td>
-      <td>357.625187</td>
+      <td>357.607358</td>
       <td>38.414348</td>
-      <td>38.431695</td>
+      <td>38.414348</td>
     </tr>
     <tr>
       <th>32</th>
@@ -15821,9 +15821,9 @@ X will take a value less than or equal to x</p>
       <td>60</td>
       <td>0.97</td>
       <td>457.733278</td>
-      <td>457.790181</td>
+      <td>457.733278</td>
       <td>52.365242</td>
-      <td>52.381107</td>
+      <td>52.365242</td>
     </tr>
     <tr>
       <th>33</th>
@@ -15831,9 +15831,9 @@ X will take a value less than or equal to x</p>
       <td>120</td>
       <td>0.90</td>
       <td>130.712731</td>
-      <td>130.726015</td>
+      <td>130.712731</td>
       <td>10.369387</td>
-      <td>10.373904</td>
+      <td>10.369387</td>
     </tr>
     <tr>
       <th>34</th>
@@ -15841,9 +15841,9 @@ X will take a value less than or equal to x</p>
       <td>120</td>
       <td>0.95</td>
       <td>194.594744</td>
-      <td>194.628327</td>
+      <td>194.594744</td>
       <td>14.766526</td>
-      <td>14.773981</td>
+      <td>14.766526</td>
     </tr>
     <tr>
       <th>35</th>
@@ -15851,9 +15851,9 @@ X will take a value less than or equal to x</p>
       <td>120</td>
       <td>0.97</td>
       <td>251.746902</td>
-      <td>251.840429</td>
+      <td>251.746902</td>
       <td>18.758853</td>
-      <td>18.768125</td>
+      <td>18.758853</td>
     </tr>
     <tr>
       <th>36</th>
@@ -15861,9 +15861,9 @@ X will take a value less than or equal to x</p>
       <td>180</td>
       <td>0.90</td>
       <td>150.704504</td>
-      <td>150.708347</td>
+      <td>150.704504</td>
       <td>10.697740</td>
-      <td>10.698154</td>
+      <td>10.697740</td>
     </tr>
     <tr>
       <th>37</th>
@@ -15871,9 +15871,9 @@ X will take a value less than or equal to x</p>
       <td>180</td>
       <td>0.95</td>
       <td>227.954618</td>
-      <td>228.240301</td>
+      <td>227.954618</td>
       <td>16.264737</td>
-      <td>16.329140</td>
+      <td>16.264737</td>
     </tr>
     <tr>
       <th>38</th>
@@ -15881,9 +15881,9 @@ X will take a value less than or equal to x</p>
       <td>180</td>
       <td>0.97</td>
       <td>323.439774</td>
-      <td>323.738670</td>
+      <td>323.439774</td>
       <td>21.840535</td>
-      <td>21.861499</td>
+      <td>21.840535</td>
     </tr>
     <tr>
       <th>39</th>
@@ -15891,9 +15891,9 @@ X will take a value less than or equal to x</p>
       <td>240</td>
       <td>0.90</td>
       <td>112.447284</td>
-      <td>112.525956</td>
+      <td>112.447284</td>
       <td>8.443537</td>
-      <td>8.446366</td>
+      <td>8.443537</td>
     </tr>
     <tr>
       <th>40</th>
@@ -15901,9 +15901,9 @@ X will take a value less than or equal to x</p>
       <td>240</td>
       <td>0.95</td>
       <td>169.795242</td>
-      <td>169.872106</td>
+      <td>169.795242</td>
       <td>11.895993</td>
-      <td>11.902954</td>
+      <td>11.895993</td>
     </tr>
     <tr>
       <th>41</th>
@@ -15911,9 +15911,9 @@ X will take a value less than or equal to x</p>
       <td>240</td>
       <td>0.97</td>
       <td>247.008329</td>
-      <td>247.109605</td>
+      <td>247.008329</td>
       <td>15.427409</td>
-      <td>15.430346</td>
+      <td>15.427409</td>
     </tr>
     <tr>
       <th>42</th>
@@ -15921,9 +15921,9 @@ X will take a value less than or equal to x</p>
       <td>360</td>
       <td>0.90</td>
       <td>117.338604</td>
-      <td>117.402638</td>
+      <td>117.338604</td>
       <td>7.091921</td>
-      <td>7.117824</td>
+      <td>7.091921</td>
     </tr>
     <tr>
       <th>43</th>
@@ -15931,9 +15931,9 @@ X will take a value less than or equal to x</p>
       <td>360</td>
       <td>0.95</td>
       <td>197.890153</td>
-      <td>199.323761</td>
+      <td>197.890153</td>
       <td>10.272579</td>
-      <td>10.284937</td>
+      <td>10.272579</td>
     </tr>
     <tr>
       <th>44</th>
@@ -15941,9 +15941,9 @@ X will take a value less than or equal to x</p>
       <td>360</td>
       <td>0.97</td>
       <td>312.285487</td>
-      <td>312.466526</td>
+      <td>312.285487</td>
       <td>15.852393</td>
-      <td>15.856714</td>
+      <td>15.852393</td>
     </tr>
     <tr>
       <th>45</th>
@@ -15951,9 +15951,9 @@ X will take a value less than or equal to x</p>
       <td>480</td>
       <td>0.90</td>
       <td>136.366394</td>
-      <td>136.407696</td>
+      <td>136.366394</td>
       <td>7.540630</td>
-      <td>7.542440</td>
+      <td>7.540630</td>
     </tr>
     <tr>
       <th>46</th>
@@ -15961,9 +15961,9 @@ X will take a value less than or equal to x</p>
       <td>480</td>
       <td>0.95</td>
       <td>218.285094</td>
-      <td>219.267892</td>
+      <td>218.285094</td>
       <td>13.016660</td>
-      <td>13.022520</td>
+      <td>13.016660</td>
     </tr>
     <tr>
       <th>47</th>
@@ -15971,9 +15971,9 @@ X will take a value less than or equal to x</p>
       <td>480</td>
       <td>0.97</td>
       <td>417.729432</td>
-      <td>430.058446</td>
+      <td>417.729432</td>
       <td>23.255535</td>
-      <td>23.281358</td>
+      <td>23.255535</td>
     </tr>
     <tr>
       <th>48</th>
@@ -15981,9 +15981,9 @@ X will take a value less than or equal to x</p>
       <td>720</td>
       <td>0.90</td>
       <td>110.287024</td>
-      <td>110.703083</td>
+      <td>110.287024</td>
       <td>5.898751</td>
-      <td>5.902594</td>
+      <td>5.898751</td>
     </tr>
     <tr>
       <th>49</th>
@@ -15991,9 +15991,9 @@ X will take a value less than or equal to x</p>
       <td>720</td>
       <td>0.95</td>
       <td>208.062695</td>
-      <td>210.813901</td>
+      <td>208.062695</td>
       <td>9.930012</td>
-      <td>9.947462</td>
+      <td>9.930012</td>
     </tr>
     <tr>
       <th>50</th>
@@ -16011,9 +16011,9 @@ X will take a value less than or equal to x</p>
       <td>1440</td>
       <td>0.90</td>
       <td>162.007587</td>
-      <td>162.033057</td>
+      <td>162.007587</td>
       <td>8.685567</td>
-      <td>8.709557</td>
+      <td>8.685567</td>
     </tr>
     <tr>
       <th>52</th>
@@ -16021,9 +16021,9 @@ X will take a value less than or equal to x</p>
       <td>1440</td>
       <td>0.95</td>
       <td>349.913653</td>
-      <td>350.136377</td>
+      <td>349.913653</td>
       <td>20.116883</td>
-      <td>21.836560</td>
+      <td>20.116883</td>
     </tr>
     <tr>
       <th>53</th>
@@ -16065,7 +16065,7 @@ X will take a value less than or equal to x</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="s1">&#39;period&#39;</span><span class="p">,</span> <span class="s1">&#39;conf&#39;</span><span class="p">,</span> <span class="s1">&#39;underestimate&#39;</span><span class="p">,</span> <span class="s1">&#39;corr_abs&#39;</span><span class="p">,</span> <span class="s1">&#39;corr_perc&#39;</span><span class="p">,</span> <span class="s1">&#39;abs_success&#39;</span><span class="p">,</span> <span class="s1">&#39;perc_success&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="s1">&#39;period&#39;</span><span class="p">,</span> <span class="s1">&#39;conf&#39;</span><span class="p">,</span> <span class="s1">&#39;underestimate&#39;</span><span class="p">,</span> <span class="s1">&#39;underest_corr_abs&#39;</span><span class="p">,</span> <span class="s1">&#39;underest_corr_perc&#39;</span><span class="p">,</span> <span class="s1">&#39;abs_success&#39;</span><span class="p">,</span> <span class="s1">&#39;perc_success&#39;</span><span class="p">]</span>
 
 <span class="n">df_validate_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">col_names</span><span class="p">)</span>
 <span class="n">df_validate_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">col_names</span><span class="p">)</span>
@@ -16082,8 +16082,8 @@ X will take a value less than or equal to x</p>
             
             <span class="n">sel</span> <span class="o">=</span> <span class="n">df_result</span><span class="p">[(</span><span class="n">df_result</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">model</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_result</span><span class="p">[</span><span class="s1">&#39;period&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">time</span><span class="p">)</span>  <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_result</span><span class="p">[</span><span class="s1">&#39;conf&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">conf</span><span class="p">)]</span>
             
-            <span class="n">abs_ov</span> <span class="o">=</span> <span class="n">sel</span><span class="p">[</span><span class="s1">&#39;abs_wo_approx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="n">perc_ov</span> <span class="o">=</span> <span class="n">sel</span><span class="p">[</span><span class="s1">&#39;percentage_wo_approx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span>
+            <span class="n">abs_ov</span> <span class="o">=</span> <span class="n">sel</span><span class="p">[</span><span class="s1">&#39;abs_min_approx_rb&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">perc_ov</span> <span class="o">=</span> <span class="n">sel</span><span class="p">[</span><span class="s1">&#39;percentage_min_approx_rb&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span>
             
             <span class="c1"># validate train </span>
             
@@ -16101,8 +16101,8 @@ X will take a value less than or equal to x</p>
                    <span class="s1">&#39;period&#39;</span> <span class="p">:</span> <span class="n">time</span><span class="p">,</span> 
                    <span class="s1">&#39;conf&#39;</span><span class="p">:</span> <span class="n">conf</span><span class="p">,</span>
                    <span class="s1">&#39;underestimate&#39;</span><span class="p">:</span> <span class="n">p</span><span class="p">,</span>
-                   <span class="s1">&#39;corr_abs&#39;</span><span class="p">:</span> <span class="n">p_abs</span><span class="p">,</span>
-                   <span class="s1">&#39;corr_perc&#39;</span><span class="p">:</span> <span class="n">p_perc</span><span class="p">,</span>
+                   <span class="s1">&#39;underest_corr_abs&#39;</span><span class="p">:</span> <span class="n">p_abs</span><span class="p">,</span>
+                   <span class="s1">&#39;underest_corr_perc&#39;</span><span class="p">:</span> <span class="n">p_perc</span><span class="p">,</span>
                    <span class="s1">&#39;abs_success&#39;</span><span class="p">:</span> <span class="n">abs_success</span><span class="p">,</span> 
                    <span class="s1">&#39;perc_success&#39;</span><span class="p">:</span> <span class="n">perc_success</span><span class="p">,</span>
                   <span class="p">}</span> 
@@ -16123,8 +16123,8 @@ X will take a value less than or equal to x</p>
                    <span class="s1">&#39;period&#39;</span> <span class="p">:</span> <span class="n">time</span><span class="p">,</span> 
                    <span class="s1">&#39;conf&#39;</span><span class="p">:</span> <span class="n">conf</span><span class="p">,</span>
                    <span class="s1">&#39;underestimate&#39;</span><span class="p">:</span> <span class="n">p</span><span class="p">,</span>
-                   <span class="s1">&#39;corr_abs&#39;</span><span class="p">:</span> <span class="n">p_abs</span><span class="p">,</span>
-                   <span class="s1">&#39;corr_perc&#39;</span><span class="p">:</span> <span class="n">p_perc</span><span class="p">,</span>
+                   <span class="s1">&#39;underest_corr_abs&#39;</span><span class="p">:</span> <span class="n">p_abs</span><span class="p">,</span>
+                   <span class="s1">&#39;underest_corr_perc&#39;</span><span class="p">:</span> <span class="n">p_perc</span><span class="p">,</span>
                    <span class="s1">&#39;abs_success&#39;</span><span class="p">:</span> <span class="n">abs_success</span><span class="p">,</span> 
                    <span class="s1">&#39;perc_success&#39;</span><span class="p">:</span> <span class="n">perc_success</span><span class="p">,</span>
                   <span class="p">}</span> 
@@ -16203,8 +16203,8 @@ X will take a value less than or equal to x</p>
       <th>period</th>
       <th>conf</th>
       <th>underestimate</th>
-      <th>corr_abs</th>
-      <th>corr_perc</th>
+      <th>underest_corr_abs</th>
+      <th>underest_corr_perc</th>
       <th>abs_success</th>
       <th>perc_success</th>
     </tr>
@@ -16217,7 +16217,7 @@ X will take a value less than or equal to x</p>
       <td>0.90</td>
       <td>64.575066</td>
       <td>9.408069</td>
-      <td>9.494874</td>
+      <td>9.496252</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16228,7 +16228,7 @@ X will take a value less than or equal to x</p>
       <td>0.95</td>
       <td>64.575066</td>
       <td>4.484954</td>
-      <td>4.494599</td>
+      <td>4.495977</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16250,7 +16250,7 @@ X will take a value less than or equal to x</p>
       <td>0.90</td>
       <td>79.144621</td>
       <td>8.956129</td>
-      <td>8.989198</td>
+      <td>8.994709</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16272,7 +16272,7 @@ X will take a value less than or equal to x</p>
       <td>0.97</td>
       <td>79.144621</td>
       <td>1.978616</td>
-      <td>1.989638</td>
+      <td>1.995150</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16283,7 +16283,7 @@ X will take a value less than or equal to x</p>
       <td>0.90</td>
       <td>85.339506</td>
       <td>8.509700</td>
-      <td>8.564815</td>
+      <td>8.575838</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16294,7 +16294,7 @@ X will take a value less than or equal to x</p>
       <td>0.95</td>
       <td>85.339506</td>
       <td>3.505291</td>
-      <td>3.571429</td>
+      <td>3.582451</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16304,8 +16304,8 @@ X will take a value less than or equal to x</p>
       <td>120</td>
       <td>0.97</td>
       <td>85.339506</td>
-      <td>1.521164</td>
-      <td>1.565256</td>
+      <td>1.576279</td>
+      <td>1.576279</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16315,8 +16315,8 @@ X will take a value less than or equal to x</p>
       <td>180</td>
       <td>0.90</td>
       <td>89.203042</td>
-      <td>8.167989</td>
-      <td>8.250661</td>
+      <td>8.267196</td>
+      <td>8.267196</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16327,7 +16327,7 @@ X will take a value less than or equal to x</p>
       <td>0.95</td>
       <td>89.203042</td>
       <td>3.240741</td>
-      <td>3.240741</td>
+      <td>3.257275</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16337,8 +16337,8 @@ X will take a value less than or equal to x</p>
       <td>180</td>
       <td>0.97</td>
       <td>89.203042</td>
-      <td>1.240079</td>
-      <td>1.240079</td>
+      <td>1.256614</td>
+      <td>1.256614</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16348,8 +16348,8 @@ X will take a value less than or equal to x</p>
       <td>240</td>
       <td>0.90</td>
       <td>87.345679</td>
-      <td>7.892416</td>
-      <td>7.980600</td>
+      <td>8.002646</td>
+      <td>8.002646</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16359,8 +16359,8 @@ X will take a value less than or equal to x</p>
       <td>240</td>
       <td>0.95</td>
       <td>87.345679</td>
-      <td>2.888007</td>
-      <td>2.976190</td>
+      <td>2.998236</td>
+      <td>2.998236</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16370,8 +16370,8 @@ X will take a value less than or equal to x</p>
       <td>240</td>
       <td>0.97</td>
       <td>87.345679</td>
-      <td>0.947972</td>
-      <td>0.970018</td>
+      <td>0.992063</td>
+      <td>0.992063</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16381,8 +16381,8 @@ X will take a value less than or equal to x</p>
       <td>360</td>
       <td>0.90</td>
       <td>90.178571</td>
-      <td>7.440476</td>
-      <td>7.506614</td>
+      <td>7.539683</td>
+      <td>7.539683</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16392,8 +16392,8 @@ X will take a value less than or equal to x</p>
       <td>360</td>
       <td>0.95</td>
       <td>90.178571</td>
-      <td>2.480159</td>
-      <td>2.513228</td>
+      <td>2.546296</td>
+      <td>2.546296</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16403,8 +16403,8 @@ X will take a value less than or equal to x</p>
       <td>360</td>
       <td>0.97</td>
       <td>90.178571</td>
-      <td>0.529101</td>
-      <td>0.529101</td>
+      <td>0.562169</td>
+      <td>0.562169</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16415,7 +16415,7 @@ X will take a value less than or equal to x</p>
       <td>0.90</td>
       <td>92.107584</td>
       <td>7.098765</td>
-      <td>7.142857</td>
+      <td>7.186949</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16425,8 +16425,8 @@ X will take a value less than or equal to x</p>
       <td>480</td>
       <td>0.95</td>
       <td>92.107584</td>
-      <td>2.116402</td>
-      <td>2.116402</td>
+      <td>2.160494</td>
+      <td>2.160494</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16436,8 +16436,8 @@ X will take a value less than or equal to x</p>
       <td>480</td>
       <td>0.97</td>
       <td>92.107584</td>
-      <td>0.132275</td>
-      <td>0.132275</td>
+      <td>0.176367</td>
+      <td>0.176367</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16448,7 +16448,7 @@ X will take a value less than or equal to x</p>
       <td>0.90</td>
       <td>93.452381</td>
       <td>6.481481</td>
-      <td>6.481481</td>
+      <td>6.547619</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16458,8 +16458,8 @@ X will take a value less than or equal to x</p>
       <td>720</td>
       <td>0.95</td>
       <td>93.452381</td>
-      <td>1.455026</td>
-      <td>1.455026</td>
+      <td>1.521164</td>
+      <td>1.521164</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16480,8 +16480,8 @@ X will take a value less than or equal to x</p>
       <td>1440</td>
       <td>0.90</td>
       <td>99.735450</td>
-      <td>5.026455</td>
-      <td>5.026455</td>
+      <td>5.158730</td>
+      <td>5.158730</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16491,8 +16491,8 @@ X will take a value less than or equal to x</p>
       <td>1440</td>
       <td>0.95</td>
       <td>99.735450</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
+      <td>0.132275</td>
+      <td>0.132275</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16513,8 +16513,8 @@ X will take a value less than or equal to x</p>
       <td>15</td>
       <td>0.90</td>
       <td>44.910163</td>
-      <td>9.494874</td>
-      <td>9.494874</td>
+      <td>9.496252</td>
+      <td>9.496252</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16524,8 +16524,8 @@ X will take a value less than or equal to x</p>
       <td>15</td>
       <td>0.95</td>
       <td>44.910163</td>
-      <td>4.494599</td>
-      <td>4.494599</td>
+      <td>4.495977</td>
+      <td>4.495977</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16535,8 +16535,8 @@ X will take a value less than or equal to x</p>
       <td>15</td>
       <td>0.97</td>
       <td>44.910163</td>
-      <td>2.495315</td>
-      <td>2.495315</td>
+      <td>2.496693</td>
+      <td>2.496693</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16546,8 +16546,8 @@ X will take a value less than or equal to x</p>
       <td>60</td>
       <td>0.90</td>
       <td>42.840608</td>
-      <td>8.989198</td>
-      <td>8.989198</td>
+      <td>8.994709</td>
+      <td>8.994709</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16557,8 +16557,8 @@ X will take a value less than or equal to x</p>
       <td>60</td>
       <td>0.95</td>
       <td>42.840608</td>
-      <td>3.990300</td>
-      <td>3.990300</td>
+      <td>3.995811</td>
+      <td>3.995811</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16568,8 +16568,8 @@ X will take a value less than or equal to x</p>
       <td>60</td>
       <td>0.97</td>
       <td>42.840608</td>
-      <td>1.989638</td>
-      <td>1.989638</td>
+      <td>1.995150</td>
+      <td>1.995150</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16579,8 +16579,8 @@ X will take a value less than or equal to x</p>
       <td>120</td>
       <td>0.90</td>
       <td>42.791005</td>
-      <td>8.564815</td>
-      <td>8.564815</td>
+      <td>8.575838</td>
+      <td>8.575838</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16590,8 +16590,8 @@ X will take a value less than or equal to x</p>
       <td>120</td>
       <td>0.95</td>
       <td>42.791005</td>
-      <td>3.571429</td>
-      <td>3.571429</td>
+      <td>3.582451</td>
+      <td>3.582451</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16601,8 +16601,8 @@ X will take a value less than or equal to x</p>
       <td>120</td>
       <td>0.97</td>
       <td>42.791005</td>
-      <td>1.565256</td>
-      <td>1.565256</td>
+      <td>1.576279</td>
+      <td>1.576279</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16612,8 +16612,8 @@ X will take a value less than or equal to x</p>
       <td>180</td>
       <td>0.90</td>
       <td>45.436508</td>
-      <td>8.250661</td>
-      <td>8.250661</td>
+      <td>8.267196</td>
+      <td>8.267196</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16623,8 +16623,8 @@ X will take a value less than or equal to x</p>
       <td>180</td>
       <td>0.95</td>
       <td>45.436508</td>
-      <td>3.240741</td>
-      <td>3.240741</td>
+      <td>3.257275</td>
+      <td>3.257275</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16634,8 +16634,8 @@ X will take a value less than or equal to x</p>
       <td>180</td>
       <td>0.97</td>
       <td>45.436508</td>
-      <td>1.240079</td>
-      <td>1.240079</td>
+      <td>1.256614</td>
+      <td>1.256614</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16645,8 +16645,8 @@ X will take a value less than or equal to x</p>
       <td>240</td>
       <td>0.90</td>
       <td>41.600529</td>
-      <td>7.980600</td>
-      <td>7.980600</td>
+      <td>8.002646</td>
+      <td>8.002646</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16656,8 +16656,8 @@ X will take a value less than or equal to x</p>
       <td>240</td>
       <td>0.95</td>
       <td>41.600529</td>
-      <td>2.976190</td>
-      <td>2.976190</td>
+      <td>2.998236</td>
+      <td>2.998236</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16667,8 +16667,8 @@ X will take a value less than or equal to x</p>
       <td>240</td>
       <td>0.97</td>
       <td>41.600529</td>
-      <td>0.970018</td>
-      <td>0.970018</td>
+      <td>0.992063</td>
+      <td>0.992063</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16678,8 +16678,8 @@ X will take a value less than or equal to x</p>
       <td>360</td>
       <td>0.90</td>
       <td>38.988095</td>
-      <td>7.506614</td>
-      <td>7.506614</td>
+      <td>7.539683</td>
+      <td>7.539683</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16689,8 +16689,8 @@ X will take a value less than or equal to x</p>
       <td>360</td>
       <td>0.95</td>
       <td>38.988095</td>
-      <td>2.513228</td>
-      <td>2.513228</td>
+      <td>2.546296</td>
+      <td>2.546296</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16700,8 +16700,8 @@ X will take a value less than or equal to x</p>
       <td>360</td>
       <td>0.97</td>
       <td>38.988095</td>
-      <td>0.529101</td>
-      <td>0.529101</td>
+      <td>0.562169</td>
+      <td>0.562169</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16711,8 +16711,8 @@ X will take a value less than or equal to x</p>
       <td>480</td>
       <td>0.90</td>
       <td>44.047619</td>
-      <td>7.142857</td>
-      <td>7.142857</td>
+      <td>7.186949</td>
+      <td>7.186949</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16722,8 +16722,8 @@ X will take a value less than or equal to x</p>
       <td>480</td>
       <td>0.95</td>
       <td>44.047619</td>
-      <td>2.116402</td>
-      <td>2.116402</td>
+      <td>2.160494</td>
+      <td>2.160494</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16733,8 +16733,8 @@ X will take a value less than or equal to x</p>
       <td>480</td>
       <td>0.97</td>
       <td>44.047619</td>
-      <td>0.132275</td>
-      <td>0.132275</td>
+      <td>0.176367</td>
+      <td>0.176367</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16744,8 +16744,8 @@ X will take a value less than or equal to x</p>
       <td>720</td>
       <td>0.90</td>
       <td>36.441799</td>
-      <td>6.481481</td>
-      <td>6.481481</td>
+      <td>6.547619</td>
+      <td>6.547619</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16755,8 +16755,8 @@ X will take a value less than or equal to x</p>
       <td>720</td>
       <td>0.95</td>
       <td>36.441799</td>
-      <td>1.455026</td>
-      <td>1.455026</td>
+      <td>1.521164</td>
+      <td>1.521164</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16777,8 +16777,8 @@ X will take a value less than or equal to x</p>
       <td>1440</td>
       <td>0.90</td>
       <td>59.126984</td>
-      <td>5.026455</td>
-      <td>5.026455</td>
+      <td>5.158730</td>
+      <td>5.158730</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16788,8 +16788,8 @@ X will take a value less than or equal to x</p>
       <td>1440</td>
       <td>0.95</td>
       <td>59.126984</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
+      <td>0.132275</td>
+      <td>0.132275</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16851,8 +16851,8 @@ X will take a value less than or equal to x</p>
       <th>period</th>
       <th>conf</th>
       <th>underestimate</th>
-      <th>corr_abs</th>
-      <th>corr_perc</th>
+      <th>underest_corr_abs</th>
+      <th>underest_corr_perc</th>
       <th>abs_success</th>
       <th>perc_success</th>
     </tr>
@@ -16865,7 +16865,7 @@ X will take a value less than or equal to x</p>
       <td>0.90</td>
       <td>64.581955</td>
       <td>12.967097</td>
-      <td>10.187941</td>
+      <td>10.189319</td>
       <td>False</td>
       <td>False</td>
     </tr>
@@ -16920,7 +16920,7 @@ X will take a value less than or equal to x</p>
       <td>0.97</td>
       <td>77.645503</td>
       <td>3.692681</td>
-      <td>1.984127</td>
+      <td>1.989638</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -16931,7 +16931,7 @@ X will take a value less than or equal to x</p>
       <td>0.90</td>
       <td>84.380511</td>
       <td>13.436949</td>
-      <td>9.788360</td>
+      <td>9.799383</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -16952,8 +16952,8 @@ X will take a value less than or equal to x</p>
       <td>120</td>
       <td>0.97</td>
       <td>84.380511</td>
-      <td>3.769841</td>
-      <td>1.642416</td>
+      <td>3.791887</td>
+      <td>1.653439</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -16963,7 +16963,7 @@ X will take a value less than or equal to x</p>
       <td>180</td>
       <td>0.90</td>
       <td>84.672619</td>
-      <td>11.904762</td>
+      <td>12.003968</td>
       <td>9.871032</td>
       <td>False</td>
       <td>True</td>
@@ -16975,7 +16975,7 @@ X will take a value less than or equal to x</p>
       <td>0.95</td>
       <td>84.672619</td>
       <td>5.357143</td>
-      <td>3.918651</td>
+      <td>3.935185</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -16985,8 +16985,8 @@ X will take a value less than or equal to x</p>
       <td>180</td>
       <td>0.97</td>
       <td>84.672619</td>
-      <td>1.917989</td>
-      <td>1.669974</td>
+      <td>2.017196</td>
+      <td>1.686508</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -16996,7 +16996,7 @@ X will take a value less than or equal to x</p>
       <td>240</td>
       <td>0.90</td>
       <td>85.912698</td>
-      <td>13.910935</td>
+      <td>14.065256</td>
       <td>10.824515</td>
       <td>False</td>
       <td>False</td>
@@ -17007,7 +17007,7 @@ X will take a value less than or equal to x</p>
       <td>240</td>
       <td>0.95</td>
       <td>85.912698</td>
-      <td>6.305115</td>
+      <td>6.371252</td>
       <td>4.387125</td>
       <td>False</td>
       <td>True</td>
@@ -17018,8 +17018,8 @@ X will take a value less than or equal to x</p>
       <td>240</td>
       <td>0.97</td>
       <td>85.912698</td>
-      <td>2.425044</td>
-      <td>1.499118</td>
+      <td>2.601411</td>
+      <td>1.521164</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -17029,8 +17029,8 @@ X will take a value less than or equal to x</p>
       <td>360</td>
       <td>0.90</td>
       <td>92.228836</td>
-      <td>11.574074</td>
-      <td>11.011905</td>
+      <td>11.739418</td>
+      <td>11.044974</td>
       <td>False</td>
       <td>False</td>
     </tr>
@@ -17040,7 +17040,7 @@ X will take a value less than or equal to x</p>
       <td>360</td>
       <td>0.95</td>
       <td>92.228836</td>
-      <td>3.902116</td>
+      <td>4.034392</td>
       <td>4.100529</td>
       <td>True</td>
       <td>True</td>
@@ -17073,8 +17073,8 @@ X will take a value less than or equal to x</p>
       <td>480</td>
       <td>0.95</td>
       <td>85.493827</td>
-      <td>3.395062</td>
-      <td>2.645503</td>
+      <td>3.615520</td>
+      <td>2.689594</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -17084,8 +17084,8 @@ X will take a value less than or equal to x</p>
       <td>480</td>
       <td>0.97</td>
       <td>85.493827</td>
-      <td>0.396825</td>
-      <td>0.176367</td>
+      <td>0.440917</td>
+      <td>0.264550</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -17096,7 +17096,7 @@ X will take a value less than or equal to x</p>
       <td>0.90</td>
       <td>93.055556</td>
       <td>15.013228</td>
-      <td>11.640212</td>
+      <td>11.706349</td>
       <td>False</td>
       <td>False</td>
     </tr>
@@ -17106,7 +17106,7 @@ X will take a value less than or equal to x</p>
       <td>720</td>
       <td>0.95</td>
       <td>93.055556</td>
-      <td>3.240741</td>
+      <td>3.306878</td>
       <td>3.505291</td>
       <td>True</td>
       <td>True</td>
@@ -17128,9 +17128,9 @@ X will take a value less than or equal to x</p>
       <td>1440</td>
       <td>0.90</td>
       <td>100.000000</td>
-      <td>9.788360</td>
+      <td>10.052910</td>
       <td>9.920635</td>
-      <td>True</td>
+      <td>False</td>
       <td>True</td>
     </tr>
     <tr>
@@ -17139,7 +17139,7 @@ X will take a value less than or equal to x</p>
       <td>1440</td>
       <td>0.95</td>
       <td>100.000000</td>
-      <td>1.058201</td>
+      <td>1.190476</td>
       <td>0.793651</td>
       <td>True</td>
       <td>True</td>
@@ -17162,7 +17162,7 @@ X will take a value less than or equal to x</p>
       <td>0.90</td>
       <td>46.450617</td>
       <td>12.006724</td>
-      <td>9.574791</td>
+      <td>9.576168</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -17173,7 +17173,7 @@ X will take a value less than or equal to x</p>
       <td>0.95</td>
       <td>46.450617</td>
       <td>6.484237</td>
-      <td>4.035769</td>
+      <td>4.037147</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -17239,7 +17239,7 @@ X will take a value less than or equal to x</p>
       <td>0.95</td>
       <td>43.794092</td>
       <td>5.291005</td>
-      <td>3.725750</td>
+      <td>3.758818</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -17271,8 +17271,8 @@ X will take a value less than or equal to x</p>
       <td>180</td>
       <td>0.95</td>
       <td>49.189815</td>
-      <td>3.356481</td>
-      <td>1.455026</td>
+      <td>3.373016</td>
+      <td>1.521164</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -17304,7 +17304,7 @@ X will take a value less than or equal to x</p>
       <td>240</td>
       <td>0.95</td>
       <td>44.179894</td>
-      <td>4.453263</td>
+      <td>4.475309</td>
       <td>3.615520</td>
       <td>True</td>
       <td>True</td>
@@ -17327,7 +17327,7 @@ X will take a value less than or equal to x</p>
       <td>0.90</td>
       <td>50.231481</td>
       <td>16.203704</td>
-      <td>16.832011</td>
+      <td>16.865079</td>
       <td>False</td>
       <td>False</td>
     </tr>
@@ -17337,8 +17337,8 @@ X will take a value less than or equal to x</p>
       <td>360</td>
       <td>0.95</td>
       <td>50.231481</td>
-      <td>6.746032</td>
-      <td>7.341270</td>
+      <td>6.845238</td>
+      <td>7.374339</td>
       <td>False</td>
       <td>False</td>
     </tr>
@@ -17370,7 +17370,7 @@ X will take a value less than or equal to x</p>
       <td>480</td>
       <td>0.95</td>
       <td>38.888889</td>
-      <td>2.028219</td>
+      <td>2.072310</td>
       <td>0.925926</td>
       <td>True</td>
       <td>True</td>
@@ -17381,7 +17381,7 @@ X will take a value less than or equal to x</p>
       <td>480</td>
       <td>0.97</td>
       <td>38.888889</td>
-      <td>0.264550</td>
+      <td>0.308642</td>
       <td>0.088183</td>
       <td>True</td>
       <td>True</td>
@@ -17392,7 +17392,7 @@ X will take a value less than or equal to x</p>
       <td>720</td>
       <td>0.90</td>
       <td>51.851852</td>
-      <td>12.962963</td>
+      <td>13.029101</td>
       <td>14.087302</td>
       <td>False</td>
       <td>False</td>
@@ -17403,7 +17403,7 @@ X will take a value less than or equal to x</p>
       <td>720</td>
       <td>0.95</td>
       <td>51.851852</td>
-      <td>2.910053</td>
+      <td>3.042328</td>
       <td>3.306878</td>
       <td>True</td>
       <td>True</td>
@@ -17437,7 +17437,7 @@ X will take a value less than or equal to x</p>
       <td>0.95</td>
       <td>67.857143</td>
       <td>0.529101</td>
-      <td>0.264550</td>
+      <td>0.396825</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -17528,7 +17528,7 @@ X will take a value less than or equal to x</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
-<pre>&#39;test abs: 26/54 -&gt; 48.148148148148145&#39;</pre>
+<pre>&#39;test abs: 25/54 -&gt; 46.2962962962963&#39;</pre>
 </div>
 
 </div>
@@ -17576,7 +17576,7 @@ X will take a value less than or equal to x</p>
 <span class="c1"># percentage - homu much percenta add to value </span>
 <span class="c1"># percentage_wo_appox - linear approximation may go outside the right boundary</span>
 
-<span class="n">col_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="s1">&#39;period&#39;</span><span class="p">,</span> <span class="s1">&#39;conf&#39;</span><span class="p">,</span> <span class="s1">&#39;bitrate_start_incl&#39;</span><span class="p">,</span> <span class="s1">&#39;bitrate_end_excl&#39;</span><span class="p">,</span> <span class="s1">&#39;abs_value&#39;</span><span class="p">,</span> <span class="s1">&#39;abs_wo_approx&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_wo_approx&#39;</span><span class="p">]</span>
+<span class="n">col_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="s1">&#39;period&#39;</span><span class="p">,</span> <span class="s1">&#39;conf&#39;</span><span class="p">,</span> <span class="s1">&#39;bitrate_start_incl&#39;</span><span class="p">,</span> <span class="s1">&#39;bitrate_end_excl&#39;</span><span class="p">,</span> <span class="s1">&#39;abs_value&#39;</span><span class="p">,</span> <span class="s1">&#39;abs_min_approx_rb&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage_min_approx_rb&#39;</span><span class="p">]</span>
 <span class="n">df_result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">col_names</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">m_idx</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">MODELS</span><span class="p">):</span>
@@ -17617,7 +17617,7 @@ X will take a value less than or equal to x</p>
                     <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x_l</span><span class="p">,</span> <span class="n">x_r</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">get_x_for_y</span><span class="p">(</span><span class="n">yx_data</span><span class="o">=</span><span class="n">ecdf_lower</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">conf</span><span class="p">)</span> 
                     <span class="n">res_d</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="n">conf_idx</span><span class="p">]</span>
                     <span class="n">res_d</span><span class="p">[</span><span class="s1">&#39;abs_value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span> 
-                    <span class="n">res_d</span><span class="p">[</span><span class="s1">&#39;abs_wo_approx&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">x_r</span>
+                    <span class="n">res_d</span><span class="p">[</span><span class="s1">&#39;abs_min_approx_rb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_r</span><span class="p">)</span>
                 
                 <span class="n">pdf</span><span class="p">,</span> <span class="n">cdf</span><span class="p">,</span> <span class="n">ecdf</span><span class="p">,</span> <span class="n">ecdf_lower</span><span class="p">,</span> <span class="n">ecdf_upper</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">get_distributions</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">perc</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
@@ -17625,7 +17625,7 @@ X will take a value less than or equal to x</p>
                     <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x_l</span><span class="p">,</span> <span class="n">x_r</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">get_x_for_y</span><span class="p">(</span><span class="n">yx_data</span><span class="o">=</span><span class="n">ecdf_lower</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">conf</span><span class="p">)</span> 
                     <span class="n">res_d</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="n">conf_idx</span><span class="p">]</span>
                     <span class="n">res_d</span><span class="p">[</span><span class="s1">&#39;percentage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
-                    <span class="n">res_d</span><span class="p">[</span><span class="s1">&#39;percentage_wo_approx&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">x_r</span>
+                    <span class="n">res_d</span><span class="p">[</span><span class="s1">&#39;percentage_min_approx_rb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_r</span><span class="p">)</span>
     
             <span class="n">res_binned</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
         
@@ -17637,9 +17637,9 @@ X will take a value less than or equal to x</p>
 
         <span class="n">grouped</span> <span class="o">=</span> <span class="n">df_binned</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;conf&#39;</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="n">df_binned</span><span class="p">[</span><span class="s1">&#39;abs_value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">grouped</span><span class="p">[</span><span class="s1">&#39;abs_value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">bfill</span><span class="p">()</span><span class="o">.</span><span class="n">ffill</span><span class="p">())</span>
-        <span class="n">df_binned</span><span class="p">[</span><span class="s1">&#39;abs_wo_approx&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">grouped</span><span class="p">[</span><span class="s1">&#39;abs_wo_approx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">bfill</span><span class="p">()</span><span class="o">.</span><span class="n">ffill</span><span class="p">())</span>
+        <span class="n">df_binned</span><span class="p">[</span><span class="s1">&#39;abs_min_approx_rb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">grouped</span><span class="p">[</span><span class="s1">&#39;abs_min_approx_rb&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">bfill</span><span class="p">()</span><span class="o">.</span><span class="n">ffill</span><span class="p">())</span>
         <span class="n">df_binned</span><span class="p">[</span><span class="s1">&#39;percentage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">grouped</span><span class="p">[</span><span class="s1">&#39;percentage&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">bfill</span><span class="p">()</span><span class="o">.</span><span class="n">ffill</span><span class="p">())</span>
-        <span class="n">df_binned</span><span class="p">[</span><span class="s1">&#39;percentage_wo_approx&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">grouped</span><span class="p">[</span><span class="s1">&#39;percentage_wo_approx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">bfill</span><span class="p">()</span><span class="o">.</span><span class="n">ffill</span><span class="p">())</span>
+        <span class="n">df_binned</span><span class="p">[</span><span class="s1">&#39;percentage_min_approx_rb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">grouped</span><span class="p">[</span><span class="s1">&#39;percentage_min_approx_rb&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">bfill</span><span class="p">()</span><span class="o">.</span><span class="n">ffill</span><span class="p">())</span>
 
         <span class="n">df_result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_result</span><span class="p">,</span> <span class="n">df_binned</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -17705,9 +17705,9 @@ X will take a value less than or equal to x</p>
       <th>bitrate_start_incl</th>
       <th>bitrate_end_excl</th>
       <th>abs_value</th>
-      <th>abs_wo_approx</th>
+      <th>abs_min_approx_rb</th>
       <th>percentage</th>
-      <th>percentage_wo_approx</th>
+      <th>percentage_min_approx_rb</th>
     </tr>
   </thead>
   <tbody>
@@ -17721,7 +17721,7 @@ X will take a value less than or equal to x</p>
       <td>73.000000</td>
       <td>73.000000</td>
       <td>20.334672</td>
-      <td>20.343840</td>
+      <td>20.334672</td>
     </tr>
     <tr>
       <th>1</th>
@@ -17733,7 +17733,7 @@ X will take a value less than or equal to x</p>
       <td>98.000000</td>
       <td>98.000000</td>
       <td>28.923498</td>
-      <td>28.947368</td>
+      <td>28.923498</td>
     </tr>
     <tr>
       <th>2</th>
@@ -17745,7 +17745,7 @@ X will take a value less than or equal to x</p>
       <td>124.000000</td>
       <td>124.000000</td>
       <td>38.111480</td>
-      <td>38.192420</td>
+      <td>38.111480</td>
     </tr>
     <tr>
       <th>3</th>
@@ -17757,7 +17757,7 @@ X will take a value less than or equal to x</p>
       <td>124.000000</td>
       <td>124.000000</td>
       <td>19.153268</td>
-      <td>19.156415</td>
+      <td>19.153268</td>
     </tr>
     <tr>
       <th>4</th>
@@ -17882,7 +17882,7 @@ X will take a value less than or equal to x</p>
     <span class="k">return</span> <span class="n">bin_start</span>
     
 
-<span class="n">col_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="s1">&#39;period&#39;</span><span class="p">,</span> <span class="s1">&#39;conf&#39;</span><span class="p">,</span> <span class="s1">&#39;underestimate&#39;</span><span class="p">,</span> <span class="s1">&#39;corr_abs&#39;</span><span class="p">,</span> <span class="s1">&#39;corr_perc&#39;</span><span class="p">,</span> <span class="s1">&#39;abs_success&#39;</span><span class="p">,</span> <span class="s1">&#39;perc_success&#39;</span><span class="p">]</span>
+<span class="n">col_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="s1">&#39;period&#39;</span><span class="p">,</span> <span class="s1">&#39;conf&#39;</span><span class="p">,</span> <span class="s1">&#39;underestimate&#39;</span><span class="p">,</span> <span class="s1">&#39;underest_corr_abs&#39;</span><span class="p">,</span> <span class="s1">&#39;underest_corr_perc&#39;</span><span class="p">,</span> <span class="s1">&#39;abs_success&#39;</span><span class="p">,</span> <span class="s1">&#39;perc_success&#39;</span><span class="p">]</span>
 
 <span class="n">df_validate_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">col_names</span><span class="p">)</span>
 <span class="n">df_validate_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">col_names</span><span class="p">)</span>
@@ -17899,8 +17899,8 @@ X will take a value less than or equal to x</p>
             
             <span class="n">overheads</span> <span class="o">=</span> <span class="n">df_result</span><span class="p">[(</span><span class="n">df_result</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">model</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_result</span><span class="p">[</span><span class="s1">&#39;period&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">time</span><span class="p">)</span>  <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_result</span><span class="p">[</span><span class="s1">&#39;conf&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">conf</span><span class="p">)]</span>
             
-            <span class="n">abs_ovs</span> <span class="o">=</span> <span class="n">overheads</span><span class="p">[</span><span class="s1">&#39;abs_wo_approx&#39;</span><span class="p">]</span>
-            <span class="n">perc_ovs</span> <span class="o">=</span> <span class="n">overheads</span><span class="p">[</span><span class="s1">&#39;percentage_wo_approx&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span>
+            <span class="n">abs_ovs</span> <span class="o">=</span> <span class="n">overheads</span><span class="p">[</span><span class="s1">&#39;abs_min_approx_rb&#39;</span><span class="p">]</span>
+            <span class="n">perc_ovs</span> <span class="o">=</span> <span class="n">overheads</span><span class="p">[</span><span class="s1">&#39;percentage_min_approx_rb&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span>
             
             <span class="c1"># validate train</span>
             
@@ -17935,8 +17935,8 @@ X will take a value less than or equal to x</p>
                    <span class="s1">&#39;period&#39;</span> <span class="p">:</span> <span class="n">time</span><span class="p">,</span> 
                    <span class="s1">&#39;conf&#39;</span><span class="p">:</span> <span class="n">conf</span><span class="p">,</span>
                    <span class="s1">&#39;underestimate&#39;</span><span class="p">:</span> <span class="n">p</span><span class="p">,</span>
-                   <span class="s1">&#39;corr_abs&#39;</span><span class="p">:</span> <span class="n">p_abs</span><span class="p">,</span>
-                   <span class="s1">&#39;corr_perc&#39;</span><span class="p">:</span> <span class="n">p_perc</span><span class="p">,</span>
+                   <span class="s1">&#39;underest_corr_abs&#39;</span><span class="p">:</span> <span class="n">p_abs</span><span class="p">,</span>
+                   <span class="s1">&#39;underest_corr_perc&#39;</span><span class="p">:</span> <span class="n">p_perc</span><span class="p">,</span>
                    <span class="s1">&#39;abs_success&#39;</span><span class="p">:</span> <span class="n">abs_success</span><span class="p">,</span> 
                    <span class="s1">&#39;perc_success&#39;</span><span class="p">:</span> <span class="n">perc_success</span><span class="p">,</span>
                   <span class="p">}</span> 
@@ -17975,8 +17975,8 @@ X will take a value less than or equal to x</p>
                    <span class="s1">&#39;period&#39;</span> <span class="p">:</span> <span class="n">time</span><span class="p">,</span> 
                    <span class="s1">&#39;conf&#39;</span><span class="p">:</span> <span class="n">conf</span><span class="p">,</span>
                    <span class="s1">&#39;underestimate&#39;</span><span class="p">:</span> <span class="n">p</span><span class="p">,</span>
-                   <span class="s1">&#39;corr_abs&#39;</span><span class="p">:</span> <span class="n">p_abs</span><span class="p">,</span>
-                   <span class="s1">&#39;corr_perc&#39;</span><span class="p">:</span> <span class="n">p_perc</span><span class="p">,</span>
+                   <span class="s1">&#39;underest_corr_abs&#39;</span><span class="p">:</span> <span class="n">p_abs</span><span class="p">,</span>
+                   <span class="s1">&#39;underest_corr_perc&#39;</span><span class="p">:</span> <span class="n">p_perc</span><span class="p">,</span>
                    <span class="s1">&#39;abs_success&#39;</span><span class="p">:</span> <span class="n">abs_success</span><span class="p">,</span> 
                    <span class="s1">&#39;perc_success&#39;</span><span class="p">:</span> <span class="n">perc_success</span><span class="p">,</span>
                   <span class="p">}</span> 
@@ -18055,8 +18055,8 @@ X will take a value less than or equal to x</p>
       <th>period</th>
       <th>conf</th>
       <th>underestimate</th>
-      <th>corr_abs</th>
-      <th>corr_perc</th>
+      <th>underest_corr_abs</th>
+      <th>underest_corr_perc</th>
       <th>abs_success</th>
       <th>perc_success</th>
     </tr>
@@ -18068,8 +18068,8 @@ X will take a value less than or equal to x</p>
       <td>15</td>
       <td>0.90</td>
       <td>64.575066</td>
-      <td>11.324680</td>
-      <td>7.714672</td>
+      <td>11.332948</td>
+      <td>7.727072</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -18079,8 +18079,8 @@ X will take a value less than or equal to x</p>
       <td>15</td>
       <td>0.95</td>
       <td>64.575066</td>
-      <td>5.871087</td>
-      <td>2.925209</td>
+      <td>5.872465</td>
+      <td>2.929343</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -18090,8 +18090,8 @@ X will take a value less than or equal to x</p>
       <td>15</td>
       <td>0.97</td>
       <td>64.575066</td>
-      <td>3.330302</td>
-      <td>1.175320</td>
+      <td>3.335813</td>
+      <td>1.182209</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -18101,8 +18101,8 @@ X will take a value less than or equal to x</p>
       <td>60</td>
       <td>0.90</td>
       <td>79.144621</td>
-      <td>10.637125</td>
-      <td>5.809083</td>
+      <td>10.642637</td>
+      <td>5.842152</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -18112,8 +18112,8 @@ X will take a value less than or equal to x</p>
       <td>60</td>
       <td>0.95</td>
       <td>79.144621</td>
-      <td>4.618607</td>
-      <td>1.669974</td>
+      <td>4.635141</td>
+      <td>1.686508</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18124,7 +18124,7 @@ X will take a value less than or equal to x</p>
       <td>0.97</td>
       <td>79.144621</td>
       <td>2.292769</td>
-      <td>0.556658</td>
+      <td>0.562169</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18134,8 +18134,8 @@ X will take a value less than or equal to x</p>
       <td>120</td>
       <td>0.90</td>
       <td>85.339506</td>
-      <td>9.281305</td>
-      <td>4.629630</td>
+      <td>9.292328</td>
+      <td>4.662698</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18145,8 +18145,8 @@ X will take a value less than or equal to x</p>
       <td>120</td>
       <td>0.95</td>
       <td>85.339506</td>
-      <td>4.023369</td>
-      <td>1.212522</td>
+      <td>4.122575</td>
+      <td>1.223545</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18156,8 +18156,8 @@ X will take a value less than or equal to x</p>
       <td>120</td>
       <td>0.97</td>
       <td>85.339506</td>
-      <td>1.289683</td>
-      <td>0.275573</td>
+      <td>1.355820</td>
+      <td>0.286596</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18167,8 +18167,8 @@ X will take a value less than or equal to x</p>
       <td>180</td>
       <td>0.90</td>
       <td>89.203042</td>
-      <td>9.375000</td>
-      <td>4.464286</td>
+      <td>9.689153</td>
+      <td>4.480820</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18178,8 +18178,8 @@ X will take a value less than or equal to x</p>
       <td>180</td>
       <td>0.95</td>
       <td>89.203042</td>
-      <td>3.637566</td>
-      <td>1.074735</td>
+      <td>3.670635</td>
+      <td>1.091270</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18200,8 +18200,8 @@ X will take a value less than or equal to x</p>
       <td>240</td>
       <td>0.90</td>
       <td>87.345679</td>
-      <td>8.597884</td>
-      <td>3.835979</td>
+      <td>8.664021</td>
+      <td>3.880071</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18212,7 +18212,7 @@ X will take a value less than or equal to x</p>
       <td>0.95</td>
       <td>87.345679</td>
       <td>2.888007</td>
-      <td>0.683422</td>
+      <td>0.705467</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18233,8 +18233,8 @@ X will take a value less than or equal to x</p>
       <td>360</td>
       <td>0.90</td>
       <td>90.178571</td>
-      <td>8.399471</td>
-      <td>3.802910</td>
+      <td>8.697090</td>
+      <td>3.935185</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18244,8 +18244,8 @@ X will take a value less than or equal to x</p>
       <td>360</td>
       <td>0.95</td>
       <td>90.178571</td>
-      <td>1.851852</td>
-      <td>0.429894</td>
+      <td>1.884921</td>
+      <td>0.462963</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18266,8 +18266,8 @@ X will take a value less than or equal to x</p>
       <td>480</td>
       <td>0.90</td>
       <td>92.107584</td>
-      <td>7.363316</td>
-      <td>3.130511</td>
+      <td>7.495591</td>
+      <td>3.262787</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18277,7 +18277,7 @@ X will take a value less than or equal to x</p>
       <td>480</td>
       <td>0.95</td>
       <td>92.107584</td>
-      <td>0.881834</td>
+      <td>0.970018</td>
       <td>0.352734</td>
       <td>True</td>
       <td>True</td>
@@ -18299,8 +18299,8 @@ X will take a value less than or equal to x</p>
       <td>720</td>
       <td>0.90</td>
       <td>93.452381</td>
-      <td>6.878307</td>
-      <td>2.314815</td>
+      <td>7.142857</td>
+      <td>2.513228</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18332,7 +18332,7 @@ X will take a value less than or equal to x</p>
       <td>1440</td>
       <td>0.90</td>
       <td>99.735450</td>
-      <td>5.952381</td>
+      <td>6.084656</td>
       <td>1.587302</td>
       <td>True</td>
       <td>True</td>
@@ -18365,8 +18365,8 @@ X will take a value less than or equal to x</p>
       <td>15</td>
       <td>0.90</td>
       <td>44.910163</td>
-      <td>10.357418</td>
-      <td>8.229993</td>
+      <td>10.371197</td>
+      <td>8.243772</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -18376,8 +18376,8 @@ X will take a value less than or equal to x</p>
       <td>15</td>
       <td>0.95</td>
       <td>44.910163</td>
-      <td>5.231757</td>
-      <td>3.169092</td>
+      <td>5.241402</td>
+      <td>3.174603</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -18387,8 +18387,8 @@ X will take a value less than or equal to x</p>
       <td>15</td>
       <td>0.97</td>
       <td>44.910163</td>
-      <td>2.923832</td>
-      <td>1.329641</td>
+      <td>2.930721</td>
+      <td>1.333774</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18398,8 +18398,8 @@ X will take a value less than or equal to x</p>
       <td>60</td>
       <td>0.90</td>
       <td>42.840608</td>
-      <td>8.961640</td>
-      <td>5.627205</td>
+      <td>8.989198</td>
+      <td>5.632716</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18409,8 +18409,8 @@ X will take a value less than or equal to x</p>
       <td>60</td>
       <td>0.95</td>
       <td>42.840608</td>
-      <td>4.045414</td>
-      <td>1.300705</td>
+      <td>4.061949</td>
+      <td>1.306217</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18420,7 +18420,7 @@ X will take a value less than or equal to x</p>
       <td>60</td>
       <td>0.97</td>
       <td>42.840608</td>
-      <td>1.940035</td>
+      <td>1.945547</td>
       <td>0.259039</td>
       <td>True</td>
       <td>True</td>
@@ -18431,8 +18431,8 @@ X will take a value less than or equal to x</p>
       <td>120</td>
       <td>0.90</td>
       <td>42.791005</td>
-      <td>7.484568</td>
-      <td>6.095679</td>
+      <td>7.517637</td>
+      <td>6.139771</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18442,7 +18442,7 @@ X will take a value less than or equal to x</p>
       <td>120</td>
       <td>0.95</td>
       <td>42.791005</td>
-      <td>2.921076</td>
+      <td>2.954145</td>
       <td>1.774691</td>
       <td>True</td>
       <td>True</td>
@@ -18453,8 +18453,8 @@ X will take a value less than or equal to x</p>
       <td>120</td>
       <td>0.97</td>
       <td>42.791005</td>
-      <td>0.903880</td>
-      <td>0.352734</td>
+      <td>0.925926</td>
+      <td>0.363757</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18464,8 +18464,8 @@ X will take a value less than or equal to x</p>
       <td>180</td>
       <td>0.90</td>
       <td>45.436508</td>
-      <td>7.440476</td>
-      <td>5.902778</td>
+      <td>7.490079</td>
+      <td>5.952381</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18475,8 +18475,8 @@ X will take a value less than or equal to x</p>
       <td>180</td>
       <td>0.95</td>
       <td>45.436508</td>
-      <td>2.463624</td>
-      <td>1.521164</td>
+      <td>2.480159</td>
+      <td>1.537698</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18497,8 +18497,8 @@ X will take a value less than or equal to x</p>
       <td>240</td>
       <td>0.90</td>
       <td>41.600529</td>
-      <td>6.459436</td>
-      <td>5.224868</td>
+      <td>6.591711</td>
+      <td>5.291005</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18508,8 +18508,8 @@ X will take a value less than or equal to x</p>
       <td>240</td>
       <td>0.95</td>
       <td>41.600529</td>
-      <td>1.543210</td>
-      <td>1.058201</td>
+      <td>1.697531</td>
+      <td>1.124339</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18530,8 +18530,8 @@ X will take a value less than or equal to x</p>
       <td>360</td>
       <td>0.90</td>
       <td>38.988095</td>
-      <td>5.489418</td>
-      <td>4.695767</td>
+      <td>5.555556</td>
+      <td>4.861111</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18541,8 +18541,8 @@ X will take a value less than or equal to x</p>
       <td>360</td>
       <td>0.95</td>
       <td>38.988095</td>
-      <td>0.760582</td>
-      <td>0.529101</td>
+      <td>0.793651</td>
+      <td>0.562169</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18563,8 +18563,8 @@ X will take a value less than or equal to x</p>
       <td>480</td>
       <td>0.90</td>
       <td>44.047619</td>
-      <td>4.761905</td>
-      <td>3.968254</td>
+      <td>5.026455</td>
+      <td>4.144621</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18596,8 +18596,8 @@ X will take a value less than or equal to x</p>
       <td>720</td>
       <td>0.90</td>
       <td>36.441799</td>
-      <td>3.306878</td>
-      <td>2.579365</td>
+      <td>3.439153</td>
+      <td>2.711640</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18630,7 +18630,7 @@ X will take a value less than or equal to x</p>
       <td>0.90</td>
       <td>59.126984</td>
       <td>2.380952</td>
-      <td>1.587302</td>
+      <td>1.719577</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18703,8 +18703,8 @@ X will take a value less than or equal to x</p>
       <th>period</th>
       <th>conf</th>
       <th>underestimate</th>
-      <th>corr_abs</th>
-      <th>corr_perc</th>
+      <th>underest_corr_abs</th>
+      <th>underest_corr_perc</th>
       <th>abs_success</th>
       <th>perc_success</th>
     </tr>
@@ -18716,8 +18716,8 @@ X will take a value less than or equal to x</p>
       <td>15</td>
       <td>0.90</td>
       <td>64.581955</td>
-      <td>13.194444</td>
-      <td>8.836254</td>
+      <td>13.210979</td>
+      <td>8.863812</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -18727,7 +18727,7 @@ X will take a value less than or equal to x</p>
       <td>15</td>
       <td>0.95</td>
       <td>64.581955</td>
-      <td>7.025739</td>
+      <td>7.027116</td>
       <td>3.446043</td>
       <td>False</td>
       <td>True</td>
@@ -18738,8 +18738,8 @@ X will take a value less than or equal to x</p>
       <td>15</td>
       <td>0.97</td>
       <td>64.581955</td>
-      <td>4.238316</td>
-      <td>1.423336</td>
+      <td>4.243827</td>
+      <td>1.426091</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -18749,8 +18749,8 @@ X will take a value less than or equal to x</p>
       <td>60</td>
       <td>0.90</td>
       <td>77.645503</td>
-      <td>13.023589</td>
-      <td>7.236552</td>
+      <td>13.062169</td>
+      <td>7.269621</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -18771,8 +18771,8 @@ X will take a value less than or equal to x</p>
       <td>60</td>
       <td>0.97</td>
       <td>77.645503</td>
-      <td>2.970679</td>
-      <td>0.727513</td>
+      <td>2.987213</td>
+      <td>0.749559</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18783,7 +18783,7 @@ X will take a value less than or equal to x</p>
       <td>0.90</td>
       <td>84.380511</td>
       <td>12.896825</td>
-      <td>6.635802</td>
+      <td>6.679894</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -18793,8 +18793,8 @@ X will take a value less than or equal to x</p>
       <td>120</td>
       <td>0.95</td>
       <td>84.380511</td>
-      <td>6.216931</td>
-      <td>1.752646</td>
+      <td>6.327160</td>
+      <td>1.763668</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -18804,7 +18804,7 @@ X will take a value less than or equal to x</p>
       <td>120</td>
       <td>0.97</td>
       <td>84.380511</td>
-      <td>2.160494</td>
+      <td>2.215608</td>
       <td>0.374780</td>
       <td>True</td>
       <td>True</td>
@@ -18815,8 +18815,8 @@ X will take a value less than or equal to x</p>
       <td>180</td>
       <td>0.90</td>
       <td>84.672619</td>
-      <td>12.566138</td>
-      <td>6.001984</td>
+      <td>12.830688</td>
+      <td>6.068122</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -18826,7 +18826,7 @@ X will take a value less than or equal to x</p>
       <td>180</td>
       <td>0.95</td>
       <td>84.672619</td>
-      <td>5.257937</td>
+      <td>5.340608</td>
       <td>1.289683</td>
       <td>False</td>
       <td>True</td>
@@ -18848,8 +18848,8 @@ X will take a value less than or equal to x</p>
       <td>240</td>
       <td>0.90</td>
       <td>85.912698</td>
-      <td>13.690476</td>
-      <td>6.393298</td>
+      <td>13.734568</td>
+      <td>6.437390</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -18859,7 +18859,7 @@ X will take a value less than or equal to x</p>
       <td>240</td>
       <td>0.95</td>
       <td>85.912698</td>
-      <td>5.577601</td>
+      <td>5.621693</td>
       <td>1.146384</td>
       <td>False</td>
       <td>True</td>
@@ -18881,8 +18881,8 @@ X will take a value less than or equal to x</p>
       <td>360</td>
       <td>0.90</td>
       <td>92.228836</td>
-      <td>12.996032</td>
-      <td>6.448413</td>
+      <td>13.392857</td>
+      <td>6.514550</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -18892,7 +18892,7 @@ X will take a value less than or equal to x</p>
       <td>360</td>
       <td>0.95</td>
       <td>92.228836</td>
-      <td>3.538360</td>
+      <td>3.637566</td>
       <td>0.859788</td>
       <td>True</td>
       <td>True</td>
@@ -18914,8 +18914,8 @@ X will take a value less than or equal to x</p>
       <td>480</td>
       <td>0.90</td>
       <td>85.493827</td>
-      <td>10.626102</td>
-      <td>4.232804</td>
+      <td>10.890653</td>
+      <td>4.320988</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -18925,8 +18925,8 @@ X will take a value less than or equal to x</p>
       <td>480</td>
       <td>0.95</td>
       <td>85.493827</td>
-      <td>2.160494</td>
-      <td>0.396825</td>
+      <td>2.380952</td>
+      <td>0.440917</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -18947,7 +18947,7 @@ X will take a value less than or equal to x</p>
       <td>720</td>
       <td>0.90</td>
       <td>93.055556</td>
-      <td>13.690476</td>
+      <td>14.285714</td>
       <td>5.952381</td>
       <td>False</td>
       <td>True</td>
@@ -18980,7 +18980,7 @@ X will take a value less than or equal to x</p>
       <td>1440</td>
       <td>0.90</td>
       <td>100.000000</td>
-      <td>13.095238</td>
+      <td>13.227513</td>
       <td>3.703704</td>
       <td>False</td>
       <td>True</td>
@@ -19013,8 +19013,8 @@ X will take a value less than or equal to x</p>
       <td>15</td>
       <td>0.90</td>
       <td>46.450617</td>
-      <td>11.579586</td>
-      <td>9.082892</td>
+      <td>11.586475</td>
+      <td>9.096671</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -19024,8 +19024,8 @@ X will take a value less than or equal to x</p>
       <td>15</td>
       <td>0.95</td>
       <td>46.450617</td>
-      <td>6.110836</td>
-      <td>3.666501</td>
+      <td>6.125992</td>
+      <td>3.669257</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -19035,8 +19035,8 @@ X will take a value less than or equal to x</p>
       <td>15</td>
       <td>0.97</td>
       <td>46.450617</td>
-      <td>3.462577</td>
-      <td>1.555611</td>
+      <td>3.472222</td>
+      <td>1.558366</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -19046,8 +19046,8 @@ X will take a value less than or equal to x</p>
       <td>60</td>
       <td>0.90</td>
       <td>46.456129</td>
-      <td>10.747354</td>
-      <td>6.795635</td>
+      <td>10.763889</td>
+      <td>6.812169</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -19057,8 +19057,8 @@ X will take a value less than or equal to x</p>
       <td>60</td>
       <td>0.95</td>
       <td>46.456129</td>
-      <td>4.916226</td>
-      <td>1.482584</td>
+      <td>4.932760</td>
+      <td>1.488095</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -19068,7 +19068,7 @@ X will take a value less than or equal to x</p>
       <td>60</td>
       <td>0.97</td>
       <td>46.456129</td>
-      <td>2.502205</td>
+      <td>2.524250</td>
       <td>0.259039</td>
       <td>True</td>
       <td>True</td>
@@ -19079,8 +19079,8 @@ X will take a value less than or equal to x</p>
       <td>120</td>
       <td>0.90</td>
       <td>43.794092</td>
-      <td>9.711199</td>
-      <td>8.068783</td>
+      <td>9.722222</td>
+      <td>8.090829</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -19090,8 +19090,8 @@ X will take a value less than or equal to x</p>
       <td>120</td>
       <td>0.95</td>
       <td>43.794092</td>
-      <td>3.869048</td>
-      <td>2.237654</td>
+      <td>3.891093</td>
+      <td>2.270723</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -19101,8 +19101,8 @@ X will take a value less than or equal to x</p>
       <td>120</td>
       <td>0.97</td>
       <td>43.794092</td>
-      <td>1.289683</td>
-      <td>0.507055</td>
+      <td>1.322751</td>
+      <td>0.540123</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -19112,7 +19112,7 @@ X will take a value less than or equal to x</p>
       <td>180</td>
       <td>0.90</td>
       <td>49.189815</td>
-      <td>6.398810</td>
+      <td>6.431878</td>
       <td>4.596561</td>
       <td>True</td>
       <td>True</td>
@@ -19145,7 +19145,7 @@ X will take a value less than or equal to x</p>
       <td>240</td>
       <td>0.90</td>
       <td>44.179894</td>
-      <td>7.407407</td>
+      <td>7.495591</td>
       <td>6.238977</td>
       <td>True</td>
       <td>True</td>
@@ -19156,8 +19156,8 @@ X will take a value less than or equal to x</p>
       <td>240</td>
       <td>0.95</td>
       <td>44.179894</td>
-      <td>2.425044</td>
-      <td>1.719577</td>
+      <td>2.535273</td>
+      <td>1.741623</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -19178,8 +19178,8 @@ X will take a value less than or equal to x</p>
       <td>360</td>
       <td>0.90</td>
       <td>50.231481</td>
-      <td>12.863757</td>
-      <td>11.210317</td>
+      <td>13.128307</td>
+      <td>11.243386</td>
       <td>False</td>
       <td>False</td>
     </tr>
@@ -19190,7 +19190,7 @@ X will take a value less than or equal to x</p>
       <td>0.95</td>
       <td>50.231481</td>
       <td>3.207672</td>
-      <td>1.818783</td>
+      <td>1.884921</td>
       <td>True</td>
       <td>True</td>
     </tr>
@@ -19211,7 +19211,7 @@ X will take a value less than or equal to x</p>
       <td>480</td>
       <td>0.90</td>
       <td>38.888889</td>
-      <td>3.747795</td>
+      <td>3.968254</td>
       <td>3.350970</td>
       <td>True</td>
       <td>True</td>
@@ -19244,8 +19244,8 @@ X will take a value less than or equal to x</p>
       <td>720</td>
       <td>0.90</td>
       <td>51.851852</td>
-      <td>8.730159</td>
-      <td>6.613757</td>
+      <td>9.325397</td>
+      <td>6.746032</td>
       <td>True</td>
       <td>True</td>
     </tr>
